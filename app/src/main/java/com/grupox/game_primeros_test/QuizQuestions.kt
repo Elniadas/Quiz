@@ -11,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_questions.*
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 class QuizQuestions : AppCompatActivity(), View.OnClickListener {
 
@@ -19,12 +21,13 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsLists: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var mQuestion: Question? = null
-    private val nPreguntas = 5
+    private val nPreguntas = PlayerSettings.nQuestions
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
-
+        PlayerSettings.rightQuestions = 0
         mQuestionsLists = Constants.getQuestions()
         progressBar.max = nPreguntas
         setQuestion()
@@ -40,8 +43,12 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     private fun setQuestion() {
 
         setDefaultOptionsView()
-        barCurrentPosition ++
-        val question: Question? = mQuestionsLists!![barCurrentPosition - 1]
+        barCurrentPosition++
+        var questPosition = Random.nextInt(0, mQuestionsLists!!.size - 1)
+
+        val question: Question? = mQuestionsLists!![questPosition]
+        mQuestionsLists!!.removeAt(questPosition)
+
         mQuestion = question
         progressBar.progress = barCurrentPosition
         tv_progressBar.text = "$barCurrentPosition/" + nPreguntas
@@ -91,12 +98,12 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
                 if (mSelectedOptionPosition == 0) {
                     bt_confirmar.text = "Selecciona una respuesta"
                 } else if (mSelectedOptionPosition == -1) {
-                    if(barCurrentPosition == nPreguntas){
-                        val intent = Intent(this,MainActivity::class.java)
+                    if (barCurrentPosition == nPreguntas) {
+                        val intent = Intent(this, End_Activity::class.java)
                         startActivity(intent)
                         finish()
-                    }else{
-                        mSelectedOptionPosition =0
+                    } else {
+                        mSelectedOptionPosition = 0
                         setQuestion()
                         bt_confirmar.text = "Comprobar"
                         tv_respuesta1.setOnClickListener(this)
@@ -112,9 +119,9 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
                     tv_respuesta2.setOnClickListener(null)
                     tv_respuesta3.setOnClickListener(null)
                     tv_respuesta4.setOnClickListener(null)
-                    if(barCurrentPosition == nPreguntas){
+                    if (barCurrentPosition == nPreguntas) {
                         bt_confirmar.text = "Resultado final"
-                    }else{
+                    } else {
                         bt_confirmar.text = "Siguente Pregunta"
                     }
 
@@ -160,6 +167,8 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     fun checkSolution() {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.wrong_text_border)
+        }else{
+            PlayerSettings.rightQuestions+=1
         }
         showSolutionTextBorder(mQuestion!!.correctAnswer, R.drawable.correct_text_border)
     }

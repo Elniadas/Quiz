@@ -7,7 +7,7 @@ object Constants {
 
 
         val question1 =  Question(1,
-            "Es bossy ??",
+            "Es bossy ??111111",
             R.drawable.bossy,
             "Si",
             "Si es ",
@@ -18,7 +18,7 @@ object Constants {
 
 
         val question2 =  Question(2,
-            "Es bossy  ??",
+            "Es bossy  ??22222222222",
             R.drawable.bossy,
             "Si",
             "Si es muy ",
@@ -29,7 +29,7 @@ object Constants {
 
 
         val question3 =  Question(3,
-            "Es bossy re re re ??",
+            "Es bossy re re re ??3333333",
             R.drawable.bossy,
             "Si",
             "Si es ",
@@ -40,7 +40,7 @@ object Constants {
 
 
         val question4 =  Question(4,
-            "Es bossy",
+            "Es bossy4444444444444",
             R.drawable.bossy,
             "Si",
             "Si es mu",
@@ -51,7 +51,7 @@ object Constants {
 
 
         val question5 =  Question(5,
-            "Es bossy la persona  ??",
+            "Es bossy la persona  ??5555555555",
             R.drawable.bossy,
             "Si",
             "Si es ",
@@ -59,6 +59,20 @@ object Constants {
             "Todas son correctas",
             4)
         questionList.add(question5)
+
+
+        val question6 =  Question(6,
+            "Es bossy la persona  ??6666666666",
+            R.drawable.bossy,
+            "Si",
+            "Si es ",
+            "Si, ",
+            "Todas son correctas",
+            4)
+        questionList.add(question6)
+
+
+
 
         return questionList
     }

@@ -1,14 +1,11 @@
 package com.grupox.game_primeros_test
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.view.WindowManager
-import androidx.core.view.WindowCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,13 +37,21 @@ class MainActivity : AppCompatActivity() {
         //endregion
         //Code
 
-        Audio.startMusic(applicationContext)
+        PlayerSettings.startMusic(applicationContext)
 
         bt_play.setOnClickListener({
             val intent = Intent(this, QuizQuestions::class.java)
             startActivity(intent)
             finish()
         })
+
+        bt_ajustes.setOnClickListener({
+            val intent = Intent(this, AudioScreen::class.java)
+            startActivity(intent)
+            finish()
+        })
+
+
     }
 
 

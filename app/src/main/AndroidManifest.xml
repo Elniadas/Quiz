@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grupox.game_primeros_test">
+
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,18 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_primeros_test">
-        <activity android:name=".AudioScreen"></activity>
+        <activity
+            android:name=".End_Activity"
+            android:exported="true" />
+        <activity android:name=".AudioScreen" />
         <activity
             android:name=".QuizQuestions"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Game_primeros_test" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Game_primeros_test"
-            android:exported="true">
+            android:theme="@style/Theme.Game_primeros_test">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

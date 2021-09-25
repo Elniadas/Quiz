@@ -7,24 +7,27 @@ import android.media.MediaPlayer
 import androidx.core.content.ContextCompat.getSystemService
 
 
-
-
-object Audio {
+object PlayerSettings {
     var player: MediaPlayer? = null
+    var played: Boolean = false
+    var nQuestions: Int = 5
+    var rightQuestions: Int = 0
 
 
-
-     fun startMusic(context: Context) {
+    fun startMusic(context: Context) {
         if (player == null) {
             player = MediaPlayer.create(context, R.raw.background_music)
         }
         player!!.start()
-
+        played = true
     }
 
-    fun changeVolume(){
+    fun stopMusic() {
 
-
+        if (player != null) {
+            player!!.pause()
+            played = false
+        }
 
 
     }

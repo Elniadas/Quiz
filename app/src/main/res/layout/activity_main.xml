@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_gameTitle" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_ajustes"
         android:layout_width="148dp"
         android:layout_height="78dp"
         android:layout_marginTop="52dp"

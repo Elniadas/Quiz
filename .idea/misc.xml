@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Elnidas/AndroidStudioProjects/Game_primeros_test/app/src/main/res/layout/activity_audio_screen.xml" value="0.11354166666666667" />
+        <entry key="..\:/Users/Elnidas/AndroidStudioProjects/Game_primeros_test/app/src/main/res/layout/activity_audio_screen.xml" value="0.4" />
+        <entry key="..\:/Users/Elnidas/AndroidStudioProjects/Game_primeros_test/app/src/main/res/layout/activity_end.xml" value="0.264" />
+        <entry key="..\:/Users/Elnidas/AndroidStudioProjects/Game_primeros_test/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Elnidas/AndroidStudioProjects/Game_primeros_test/app/src/main/res/layout/activity_quiz_questions.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
