@@ -23,7 +23,6 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     private var mQuestion: Question? = null
     private val nPreguntas = PlayerSettings.nQuestions
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
@@ -36,9 +35,17 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
         tv_respuesta3.setOnClickListener(this)
         tv_respuesta4.setOnClickListener(this)
         bt_confirmar.setOnClickListener(this)
-
+        window.decorView.apply {
+            systemUiVisibility =
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
     }
 
+    //Change bar visibility
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) hideSystemUI()
+    }
 
     private fun setQuestion() {
 
@@ -167,10 +174,33 @@ class QuizQuestions : AppCompatActivity(), View.OnClickListener {
     fun checkSolution() {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.wrong_text_border)
-        }else{
-            PlayerSettings.rightQuestions+=1
+        } else {
+            PlayerSettings.rightQuestions += 1
         }
         showSolutionTextBorder(mQuestion!!.correctAnswer, R.drawable.correct_text_border)
     }
 
+
+    private fun hideSystemUI() {
+        // Enables regular immersive mode.
+        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
+                // Set the content to appear under the system bars so that the
+                // content doesn't resize when the system bars hide and show.
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                // Hide the nav bar and status bar
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+    }
+
+    // Shows the system bars by removing all the flags
+    // except for the ones that make the content appear under the system bars.
+    private fun showSystemUI() {
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
 }

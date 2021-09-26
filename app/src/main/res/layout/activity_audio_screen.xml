@@ -7,6 +7,17 @@
     android:background="@drawable/bc"
     tools:context=".AudioScreen">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="Play/Stop"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="347dp"
@@ -17,9 +28,10 @@
         android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.04">
+        app:layout_constraintVertical_bias="0.048">
 
 
         <RadioButton
@@ -29,7 +41,9 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:text="5"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="158dp" />
 
         <RadioButton
             android:id="@+id/rb_10preguntas"
@@ -38,7 +52,9 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:text="10"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="172dp"
+            tools:layout_editor_absoluteY="158dp" />
 
         <RadioButton
             android:id="@+id/rb_15preguntas"
@@ -49,40 +65,30 @@
             android:layout_marginRight="25dp"
             android:minHeight="48dp"
             android:text="15"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="270dp"
+            tools:layout_editor_absoluteY="158dp" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="72dp"
         android:text="Número de preguntas"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Play/Stop"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bt_sound"
         android:layout_width="172dp"
         android:layout_height="92dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
