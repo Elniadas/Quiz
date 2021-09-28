@@ -1,16 +1,12 @@
 package com.grupox.game_primeros_test
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_main.*
-import android.view.WindowInsets
-
-import android.annotation.TargetApi
-import android.os.Build.VERSION_CODES
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         setContentView(R.layout.activity_main)
+        randomBg()
         if (PlayerSettings.appStart)
             PlayerSettings.startMusic(applicationContext)
 
@@ -34,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         bt_play.setOnClickListener {
             val intent = Intent(this, QuizQuestions::class.java)
             startActivity(intent)
-            finish()
         }
 
         bt_ajustes.setOnClickListener {
@@ -63,6 +59,64 @@ class MainActivity : AppCompatActivity() {
                 // Hide the nav bar and status bar
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
+    }
+
+    //picks a random hololive member for the mainActivity background image
+    private fun randomBg() {
+        var listOfBackgrounds = arrayListOf<Int>()
+        listOfBackgrounds.addAll(
+            listOf(
+//                R.drawable.achan,
+//                R.drawable.aki,
+                R.drawable.aloe,
+//                R.drawable.amelia,
+//                R.drawable.anya,
+                R.drawable.aqua,
+//                R.drawable.ayame,
+//                R.drawable.azki,
+//                R.drawable.botan,
+                R.drawable.calliope,
+//                R.drawable.choco,
+//                R.drawable.coco,
+//                R.drawable.flare,
+//                R.drawable.fubuki,
+//                R.drawable.gura,
+//                R.drawable.haachama,
+//                R.drawable.ina,
+//                R.drawable.iofi,
+//                R.drawable.kanata,
+//                R.drawable.kiara,
+//                R.drawable.korone,
+//                R.drawable.lamy,
+                R.drawable.luna,
+//                R.drawable.marine,
+//                R.drawable.matsuri,
+//                R.drawable.mel,
+//                R.drawable.miko,
+//                R.drawable.mio,
+                R.drawable.moona,
+//                R.drawable.nene,
+//                R.drawable.noel,
+                R.drawable.okayu,
+//                R.drawable.ollie,
+//                R.drawable.pekora,
+//                R.drawable.polka,
+                R.drawable.reine,
+//                R.drawable.risu,
+//                R.drawable.roboco,
+//                R.drawable.rushia,
+                R.drawable.shion,
+//                R.drawable.sora,
+//                R.drawable.subaru,
+//                R.drawable.suisei,
+                R.drawable.towa,
+//                R.drawable.watame
+            )
+        )
+        var randomImage: Int =
+            Random(System.nanoTime()).nextInt(0, listOfBackgrounds.size - 1)
+        Log.i("random", randomImage.toString())
+        main_menu_background.setImageResource(listOfBackgrounds[randomImage])
     }
 
     // Shows the system bars by removing all the flags
