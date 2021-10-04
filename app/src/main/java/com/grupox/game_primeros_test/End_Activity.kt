@@ -18,7 +18,7 @@ class End_Activity : AppCompatActivity() {
             "Preguntas acertadas en total : ${PlayerSettings.rightQuestions}/${PlayerSettings.nQuestions}"
 
         bt_playAgain.setOnClickListener {
-            val intent = Intent(this, QuizQuestions::class.java)
+            val intent = Intent(this, QuizFragments::class.java)
             startActivity(intent)
             finish()
 

@@ -14,6 +14,7 @@ object PlayerSettings {
     var nQuestions: Int = 5
     var rightQuestions: Int = 0
     var appStart = true
+    var questAnswered = false
 
     fun startMusic(context: Context) {
         if (player == null) {

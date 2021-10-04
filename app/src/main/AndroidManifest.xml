@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_primeros_test">
-
+        <activity
+            android:name=".QuizFragments"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -19,31 +21,31 @@
             android:theme="@style/Theme.Game_primeros_test">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AudioScreen"
-            android:parentActivityName="com.grupox.game_primeros_test.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.Ajustes">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".QuizQuestions"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Ajustes">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".End_Activity"
             android:exported="true" />

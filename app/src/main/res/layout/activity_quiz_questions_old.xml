@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:visibility="visible"
+    tools:context=".QuizFragments"
+    tools:visibility="visible">
+
+    <Button
+        android:id="@+id/bt_confirmar_quiz"
+
+        android:background="@drawable/estilo_boton_naranja"
+        android:layout_width="367dp"
+        android:layout_height="52dp"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        android:clickable="true"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer_Quiz"
+        android:name="com.grupox.game_primeros_test.QuizImageType"
+        android:layout_width="0dp"
+        android:layout_height="550dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_confirmar_quiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_texto_fragmento"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout="@layout/fragment_one_image" />
+
+    <ProgressBar
+        android:id="@+id/pb_quiz"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_confirmar_quiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029" />
+
+    <TextView
+        android:id="@+id/tv_texto_fragmento"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

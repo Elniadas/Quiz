@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         PlayerSettings.appStart = false
 
         bt_play.setOnClickListener {
-            val intent = Intent(this, QuizQuestions::class.java)
+            val intent = Intent(this, QuizFragments::class.java)
             startActivity(intent)
         }
 
