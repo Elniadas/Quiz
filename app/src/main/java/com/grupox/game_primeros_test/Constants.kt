@@ -157,6 +157,209 @@ object Constants {
         )
         questionImageList!!.add(question12)
 
+        val question13 = Question(
+            id = 1,
+            question = "¿De que generación de Hololive es Kanata?",
+            image = R.drawable.pregunta_diecisiete,
+            optionOne = "Primera generación de Hololive",
+            optionTwo = "Segunda generación de Hololive",
+            optionThree = "Tercera generación de Hololive",
+            optionFour = "Cuarta generación de Hololive",
+            correctAnswer = 4
+        )
+        questionImageList!!.add(question13)
+
+        val question14 = Question(
+            id = 1,
+            question = "La primera generación de Hololive English está compuesta de…",
+            image = R.drawable.pregunta_dieciocho,
+            optionOne = "Amelia, Gura, Ina, Calliope y Kiara",
+            optionTwo = "Kanata, Coco, Luna, Towa y Watame",
+            optionThree = "Fubuki, Matsuri, Mel, Aki y Akai Haato",
+            optionFour = "Choco, Subaru, Ayame, Shion y Aqua",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question14)
+
+        val question15 = Question(
+            id = 1,
+            question = "El término que se usa para señalar que una Vtuber cesa sus actividades es…",
+            image = R.drawable.pregunta_diecinueve,
+            optionOne = "Jubilación",
+            optionTwo = "Graduación",
+            optionThree = "Desaparición",
+            optionFour = "Finalización",
+            correctAnswer = 2
+        )
+        questionImageList!!.add(question15)
+
+        val question16 = Question(
+            id = 1,
+            question = "¿Con qué miembro de Hololive se fundó la empresa?",
+            image = R.drawable.pregunta_veinte,
+            optionOne = "Suisei",
+            optionTwo = "Korone",
+            optionThree = "Fubuki",
+            optionFour = "Sora",
+            correctAnswer = 4
+        )
+        questionImageList!!.add(question16)
+
+        val question17 = Question(
+            id = 1,
+            question = "En el primer directo de Sora, ¿cuántos espectadores hubo?",
+            image = R.drawable.pregunta_veintiuno,
+            optionOne = "Menos de 20",
+            optionTwo = "Más de 100",
+            optionThree = "Más de 1000",
+            optionFour = "Más de 10000",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question17)
+
+        val question18 = Question(
+            id = 1,
+            question = "¿A que compañía pertenece Pikamee?",
+            image = R.drawable.pregunta_veintidos,
+            optionOne = "VOMS",
+            optionTwo = "Hololive",
+            optionThree = "Vshojo",
+            optionFour = "Nijisanji",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question18)
+
+        val question19 = Question(
+            id = 1,
+            question = "¿Qué les requisa Korone a sus espectadores al comienzo de su directo para que no se vayan?",
+            image = R.drawable.pregunta_veintitres,
+            optionOne = "Los dedos",
+            optionTwo = "La voluntad",
+            optionThree = "Las manos",
+            optionFour = "Los labios",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question19)
+
+        val question20 = Question(
+            id = 1,
+            question = "¿Quién fue el primer miembro de Hololive que empezó a hacer directos hablando en inglés?",
+            image = R.drawable.pregunta_veinticuatro,
+            optionOne = "Kiryu Coco",
+            optionTwo = "Akai Haato",
+            optionThree = "Inugane Korone",
+            optionFour = "Shirogane Noel",
+            correctAnswer = 2
+        )
+        questionImageList!!.add(question20)
+
+        val question21 = Question(
+            id = 1,
+            question = "¿Quién iba a ser un miembro de la primera generación de Hololive?",
+            image = R.drawable.pregunta_veintiseis,
+            optionOne = "Mano Aloe",
+            optionTwo = "Hitomi Chris",
+            optionThree = "Yuzuki Choco",
+            optionFour = "Ookami Mio",
+            correctAnswer = 2
+        )
+        questionImageList!!.add(question21)
+
+        val question22 = Question(
+            id = 1,
+            question = "¿Cuáles son todas las ramas de Hololive que existen actualmente?",
+            image = R.drawable.pregunta_veintisiete,
+            optionOne = "Hololive China y Hololive Japan",
+            optionTwo = "Hololive China, Hololive Japan, Hololive Indonesia y Hololive English",
+            optionThree = "Hololive Japan y Hololive English",
+            optionFour = "Hololive Japan, Hololive Indonesia y Hololive English",
+            correctAnswer = 4
+        )
+        questionImageList!!.add(question22)
+
+        val question23 = Question(
+            id = 1,
+            question = "La compañía con más miembros es…",
+            image = R.drawable.pregunta_veintiocho,
+            optionOne = "Nijisanji",
+            optionTwo = "Vshojo",
+            optionThree = "VOMS",
+            optionFour = "Hololive",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question23)
+
+        val question24 = Question(
+            id = 1,
+            question = "La tercera generación de Hololive está compuesta por…",
+            image = R.drawable.pregunta_veintinueve,
+            optionOne = "Aqua, Ayame, Choco, Subaru y Shion",
+            optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
+            optionThree = "Watame, Luna, Coco, Towa y Kanata",
+            optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            correctAnswer = 2
+        )
+        questionImageList!!.add(question24)
+
+        val question25 = Question(
+            id = 1,
+            question = "La segunda generación de Hololive está compuesta por…",
+            image = R.drawable.pregunta_treinta,
+            optionOne = "Aqua, Ayame, Choco, Subaru y Shion",
+            optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
+            optionThree = "Watame, Luna, Coco, Towa y Kanata",
+            optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question25)
+
+        val question26 = Question(
+            id = 1,
+            question = "La primera generación de Hololive está compuesta por…",
+            image = R.drawable.pregunta_treintayuno,
+            optionOne = "Aqua, Ayame, Choco, Subaru y Shion",
+            optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
+            optionThree = "Watame, Luna, Coco, Towa y Kanata",
+            optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            correctAnswer = 4
+        )
+        questionImageList!!.add(question26)
+
+        val question27 = Question(
+            id = 1,
+            question = "La primera generación de Hololive está compuesta por…",
+            image = R.drawable.pregunta_treintaydos,
+            optionOne = "Aqua, Ayame, Choco, Subaru y Shion",
+            optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
+            optionThree = "Watame, Luna, Coco, Towa y Kanata",
+            optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            correctAnswer = 3
+        )
+        questionImageList!!.add(question27)
+
+        val question28 = Question(
+            id = 1,
+            question = "¿En qué había trabajado Watame antes de pertenecer a Hololive?",
+            image = R.drawable.pregunta_treintaytres,
+            optionOne = "Era profesora infantil",
+            optionTwo = "Era camarera",
+            optionThree = "Era escritora",
+            optionFour = "Era cocinera",
+            correctAnswer = 1
+        )
+        questionImageList!!.add(question28)
+
+        val question29 = Question(
+            id = 1,
+            question = "¿Qué miembro de Hololive protagoniza una serie de cortos donde realiza actividades para niños?",
+            image = R.drawable.pregunta_treintaycuatro,
+            optionOne = "Botan",
+            optionTwo = "Lamy",
+            optionThree = "Coco",
+            optionFour = "Watame",
+            correctAnswer = 4
+        )
+        questionImageList!!.add(question29)
 
         return questionImageList as ArrayList<Question>
     }
@@ -201,6 +404,43 @@ object Constants {
         )
         questionGifList.add(question3)
 
+        val question4 = Question(
+            id = 1,
+            question = "¿De qué generación es Pekora?",
+            image = R.drawable.pregunta_dieciseis_gif,
+            optionOne = "Primera generación de Hololive",
+            optionTwo = "Segunda generación de Hololive",
+            optionThree = "Tercera generación de Hololive",
+            optionFour = "Cuarta generación de Hololive",
+            correctAnswer = 3
+        )
+        questionGifList.add(question4)
+
+        val question5 = Question(
+            id = 1,
+            question = "¿Quién es la “mama” de Subaru?",
+            image = R.drawable.pregunta_veinticinco_gif,
+            optionOne = "Shigure Ui",
+            optionTwo = "Inuyama Tamaki",
+            optionThree = "Nachoneko",
+            optionFour = "Nabi",
+            correctAnswer = 1
+        )
+
+        questionGifList.add(question5)
+
+        val question6 = Question(
+            id = 1,
+            question = "¿Cómo llama Ina a sus seguidores?",
+            image = R.drawable.pregunta_treintaycinco_gif,
+            optionOne = "Inan’s",
+            optionTwo = "Takodachis",
+            optionThree = "Octochans",
+            optionFour = "Takochis",
+            correctAnswer = 2
+        )
+
+        questionGifList.add(question6)
 
         return questionGifList
     }
