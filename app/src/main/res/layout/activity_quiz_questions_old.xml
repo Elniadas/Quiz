@@ -9,25 +9,26 @@
     tools:context=".QuizFragments"
     tools:visibility="visible">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_confirmar_quiz"
 
-        android:background="@drawable/estilo_boton_naranja"
-        android:layout_width="367dp"
+        android:layout_width="match_parent"
         android:layout_height="52dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/estilo_boton_naranja"
+        android:clickable="true"
         android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991"
-        android:clickable="true"
-        />
+        app:layout_constraintVertical_bias="0.991" />
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer_Quiz"
         android:name="com.grupox.game_primeros_test.QuizImageType"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_confirmar_quiz"
