@@ -17,14 +17,17 @@ object PlayerSettings {
     var rightQuestions: Int = 0
     var appStart = true
     var questAnswered = false
+    var buttonSoundPlayer: MediaPlayer? = null
 
     fun startMusic(context: Context) {
         if (player == null) {
+
             player = MediaPlayer.create(context, R.raw.background_music)
+            player!!.setVolume(0.15f,0.15f)
         }
         player!!.start()
         played = true
-        Log.i("MUSICA: ","Reproduciendo, StartMusic")
+        Log.i("MUSICA: ", "Reproduciendo, StartMusic")
     }
 
     fun stopMusic() {
@@ -32,10 +35,17 @@ object PlayerSettings {
         if (player != null) {
             player!!.pause()
             played = false
-            Log.i("MUSICA: ","Parando, stopMusic")
+            Log.i("MUSICA: ", "Parando, stopMusic")
         }
 
     }
+
+
+    fun buttonSound(sound: Int, context: Context) {
+        buttonSoundPlayer = MediaPlayer.create(context, sound)
+        buttonSoundPlayer!!.start()
+    }
+
 
     fun stopMusicOnExit() {
 

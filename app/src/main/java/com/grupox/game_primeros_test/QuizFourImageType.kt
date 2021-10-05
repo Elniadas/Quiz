@@ -65,8 +65,10 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
 
     override fun checkSolution() {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
+            PlayerSettings.buttonSound(R.raw.fallo, requireContext().applicationContext)
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.wrong_image_border)
         } else {
+            PlayerSettings.buttonSound(R.raw.correcto, requireContext().applicationContext)
             PlayerSettings.rightQuestions += 1
         }
         showSolutionTextBorder(mQuestion!!.correctAnswer, R.drawable.correct_image_border)

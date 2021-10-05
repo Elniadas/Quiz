@@ -18,8 +18,7 @@ open class Audio : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
 
-        //foregrounded()
-        //foregroundedV2()
+
 
         if (PlayerSettings.played && !foregrounded()) {
             PlayerSettings.stopMusicOnExit()
@@ -46,14 +45,7 @@ open class Audio : AppCompatActivity() {
         return r
     }
 
-    fun foregroundedV2(): Boolean {
-        val km = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-        // App is foreground, but screen is locked, so show notification
-        // App is foreground, but screen is locked, so show notification
-        var r = km.inKeyguardRestrictedInputMode()
-        Log.i("foregroundedV2: ", r.toString())
-        return r
-    }
+
 
 
 }

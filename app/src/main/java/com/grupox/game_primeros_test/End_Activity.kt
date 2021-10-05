@@ -25,8 +25,8 @@ class End_Activity : AppCompatActivity() {
         }
 
         bt_backToMenuFromEnd.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
             finish()
 
         }

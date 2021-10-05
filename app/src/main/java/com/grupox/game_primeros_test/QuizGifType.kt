@@ -130,8 +130,10 @@ class QuizGifType : QuizBaseTypeFragment(), View.OnClickListener {
 
     override fun checkSolution() {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
+            PlayerSettings.buttonSound(R.raw.fallo, requireContext().applicationContext)
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.estilo_boton_incorrecto)
         } else {
+            PlayerSettings.buttonSound(R.raw.correcto, requireContext().applicationContext)
             PlayerSettings.rightQuestions += 1
         }
         showSolutionTextBorder(mQuestion!!.correctAnswer, R.drawable.estilo_boton_correcto)

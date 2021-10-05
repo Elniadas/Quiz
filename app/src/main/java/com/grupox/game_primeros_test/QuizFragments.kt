@@ -53,7 +53,7 @@ class QuizFragments : Audio() {
 //                finish()
 //            }
 
-
+//            PlayerSettings.buttonSound(R.raw.clic_audio,this)
             if(_preguntasCompletadas==nPreguntas){
 
                 if(_fragments!![_currentFragment].isCompleted()){
