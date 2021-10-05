@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
 import kotlinx.android.synthetic.main.activity_quiz_questions_old.bt_confirmar_quiz
 import kotlin.random.Random
 
-class QuizFragments : AppCompatActivity() {
+class QuizFragments : Audio() {
 
 
     var _fragments: ArrayList<QuizBaseTypeFragment>? = null

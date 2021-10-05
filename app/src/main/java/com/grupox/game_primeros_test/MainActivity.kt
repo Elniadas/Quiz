@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Audio() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

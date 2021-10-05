@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Context.AUDIO_SERVICE
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 
 
@@ -22,6 +24,7 @@ object PlayerSettings {
         }
         player!!.start()
         played = true
+        Log.i("MUSICA: ","Reproduciendo, StartMusic")
     }
 
     fun stopMusic() {
@@ -29,6 +32,23 @@ object PlayerSettings {
         if (player != null) {
             player!!.pause()
             played = false
+            Log.i("MUSICA: ","Parando, stopMusic")
+        }
+
+    }
+
+    fun stopMusicOnExit() {
+
+        if (player != null) {
+            player!!.pause()
+        }
+
+    }
+
+    fun resumeMusicOnExit() {
+
+        if (player != null) {
+            player!!.start()
         }
 
     }

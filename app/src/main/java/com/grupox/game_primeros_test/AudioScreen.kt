@@ -6,9 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_audio_screen.*
 
-class AudioScreen : AppCompatActivity() {
+class AudioScreen : Audio() {
 
     var audioManager: AudioManager? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
