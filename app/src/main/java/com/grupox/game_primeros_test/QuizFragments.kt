@@ -38,6 +38,7 @@ class QuizFragments : AppCompatActivity() {
 
 
         bt_confirmar_quiz.setOnClickListener {
+            Log.i("PREGUNTAS: ", "Preguntas completadas : "+ _preguntasCompletadas)
             if (_preguntasCompletadas < nPreguntas) {
                 //if (_fragments!![_currentFragment].isCompleted()) {
                 if (PlayerSettings.questAnswered) {
@@ -46,7 +47,7 @@ class QuizFragments : AppCompatActivity() {
                 } else {
                     bt_confirmar_quiz.text = "Responde a la pregunta primero"
                 }
-            } else {
+            } else if(_fragments!![_currentFragment].isCompleted()){
                 val intent = Intent(this, End_Activity::class.java)
                 startActivity(intent)
                 finish()
@@ -93,7 +94,8 @@ class QuizFragments : AppCompatActivity() {
         _currentFragment = nextFragment
         Log.i("current = a  :  ", _currentFragment.toString())
         updateProgressBar()
-        replaceFragment(_fragments!![_currentFragment].Clone())
+        _fragments!![_currentFragment]=_fragments!![_currentFragment].Clone()
+        replaceFragment(_fragments!![_currentFragment])
         /*
          if (nextFragment == _currentFragment) {
              // _fragments!![_currentFragment].nextQuestion()
