@@ -206,6 +206,8 @@ object Constants {
     }
 
     fun getFourImageQuestions(): ArrayList<Question> {
+        questionFourImageList = ArrayList()
+
         val question1 = Question(
             id = 1,
             question = "Selecciona a Nakiri Ayame",

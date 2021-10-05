@@ -2,6 +2,7 @@ package com.grupox.game_primeros_test
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -91,11 +92,12 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
 
     private fun setQuestion() {
         _isCompleted = false
+        println("Quedan 4 im antes: " + Constants.questionFourImageList.size)
         var questPosition = Random.nextInt(Constants.questionFourImageList.size)
         setDefaultOptionsView()
         val question: Question = Constants.questionFourImageList[questPosition]
         Constants.questionFourImageList.removeAt(questPosition)
-
+        println("Quedan 4 im después : " + Constants.questionFourImageList.size)
         mQuestion = question
         var a = activity as QuizFragments
         a.cambiarTexto(question.question)
