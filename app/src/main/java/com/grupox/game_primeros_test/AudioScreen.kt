@@ -1,15 +1,19 @@
 package com.grupox.game_primeros_test
 
+import android.content.Intent
 import android.os.Bundle
 import android.media.AudioManager
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.AdapterView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_audio_screen.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class AudioScreen : Audio() {
 
     var audioManager: AudioManager? = null
-
+    var vtuber: Vtuber? = null
+    var vtuberName = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +25,35 @@ class AudioScreen : Audio() {
         rb_5preguntas.setOnClickListener { PlayerSettings.nQuestions = 5 }
         rb_10preguntas.setOnClickListener { PlayerSettings.nQuestions = 10 }
         rb_15preguntas.setOnClickListener { PlayerSettings.nQuestions = 15 }
+        setupCustomSpinner()
+    }
+
+    private fun setupCustomSpinner() {
+        val adapter = VtuberArrayAdapter(this, Vtubers.list!!)
+        customSpinner.adapter = adapter
+        customSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = parent!!.getItemAtPosition(position)
+                vtuber = selectedItem as Vtuber
+                vtuberName = vtuber!!.name
+                vtuberName += "_new"
+
+                Constants.newBackGround = vtuberName.lowercase()
+
+                Toast.makeText(this@AudioScreen, "$vtuberName", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

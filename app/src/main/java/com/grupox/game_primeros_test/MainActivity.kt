@@ -22,7 +22,8 @@ class MainActivity : Audio() {
 //        }
 
         setContentView(R.layout.activity_main)
-        randomBg()
+        //randomBg()
+        setBgUser()
         if (PlayerSettings.appStart)
             PlayerSettings.startMusic(applicationContext)
 
@@ -117,6 +118,16 @@ class MainActivity : Audio() {
             Random(System.nanoTime()).nextInt(0, listOfBackgrounds.size - 1)
         Log.i("random", randomImage.toString())
         main_menu_background.setImageResource(listOfBackgrounds[randomImage])
+    }
+
+    private fun setBgUser() {
+        main_menu_background.setImageResource(
+            resources.getIdentifier(
+                Constants.newBackGround,
+                "drawable",
+                packageName
+            )
+        )
     }
 
     // Shows the system bars by removing all the flags

@@ -5,6 +5,13 @@ object Constants {
     var questionImageList: ArrayList<Question>? = null
     var questionGifList: ArrayList<Question> = ArrayList()
     var questionFourImageList: ArrayList<Question> = ArrayList()
+    var newBackGround: String = ""
+        get() {
+            if (field == "") {
+                return "achan_new"
+            }
+            return field
+        }
 
     fun getImageQuestions(): ArrayList<Question> {
 
