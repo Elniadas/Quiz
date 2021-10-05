@@ -137,7 +137,7 @@ class QuizGifType : QuizBaseTypeFragment(), View.OnClickListener {
         showSolutionTextBorder(mQuestion!!.correctAnswer, R.drawable.estilo_boton_correcto)
     }
 
-    override public fun nextQuestion() {
+    override fun nextQuestion() {
         setQuestion()
     }
 

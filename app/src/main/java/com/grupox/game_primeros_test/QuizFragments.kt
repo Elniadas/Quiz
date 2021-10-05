@@ -26,6 +26,7 @@ class QuizFragments : AppCompatActivity() {
 
         Constants.getImageQuestions()
         Constants.getGifQuestions()
+        Constants.getFourImageQuestions()
 
         //Initialize variables
         _fragments = Constants.getFragments()
@@ -87,7 +88,7 @@ class QuizFragments : AppCompatActivity() {
         while (_fragments!![nextFragment].QuestionsLeft() < 0) {
             _fragments!!.removeAt(nextFragment)
             nextFragment = getNextFragment()
-            Log.i("Fragmento y tal en el while :  ", "Frag: " + nextFragment)
+            Log.i("Fragmento while :  ", "Frag: " + nextFragment)
         }
         _currentFragment = nextFragment
         Log.i("current = a  :  ", _currentFragment.toString())
