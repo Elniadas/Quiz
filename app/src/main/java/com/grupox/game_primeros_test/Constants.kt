@@ -69,8 +69,7 @@ object Constants {
 
         val question5 = Question(
             id = 1,
-            question = "En un vídeo que Watame subió para supuestamente disculparse por algo, dijo lo " +
-                    "siguiente… ¿Por qué se iba a disculpar? ",
+            question = "En el vídeo de disculpa de Watame, ¿porqué se iba a disculpar?",
             image = R.drawable.pregunta_cinco,
             optionOne = "Por enfadarse y cerrar el directo al perder en un juego",
             optionTwo = "Porque su internet era muy malo y tenía cortes de conexión",
@@ -142,7 +141,7 @@ object Constants {
 
         val question11 = Question(
             id = 1,
-            question = "En un directo, Pekora le enseñó sus videos a un familiar… ¿quién era?",
+            question = "Pekora le enseñó sus videos a un familiar… ¿quién era?",
             image = R.drawable.pregunta_catorce,
             optionOne = "Su tía",
             optionTwo = "Su hermana",
@@ -178,7 +177,7 @@ object Constants {
 
         val question14 = Question(
             id = 1,
-            question = "La primera generación de Hololive English está compuesta de…",
+            question = "La primera generación de Hololive English está formada por…",
             image = R.drawable.pregunta_dieciocho,
             optionOne = "Amelia, Gura, Ina, Calliope y Kiara",
             optionTwo = "Kanata, Coco, Luna, Towa y Watame",
@@ -238,7 +237,7 @@ object Constants {
 
         val question19 = Question(
             id = 1,
-            question = "¿Qué les requisa Korone a sus espectadores al comienzo de su directo para que no se vayan?",
+            question = "¿Qué les requisa Korone a sus espectadores?",
             image = R.drawable.pregunta_veintitres,
             optionOne = "Los dedos",
             optionTwo = "La voluntad",
@@ -250,7 +249,7 @@ object Constants {
 
         val question20 = Question(
             id = 1,
-            question = "¿Quién fue el primer miembro de Hololive que empezó a hacer directos hablando en inglés?",
+            question = "El primer miebro de Hololive en hacer directos en inglés fue...",
             image = R.drawable.pregunta_veinticuatro,
             optionOne = "Kiryu Coco",
             optionTwo = "Akai Haato",
@@ -334,7 +333,7 @@ object Constants {
 
         val question27 = Question(
             id = 1,
-            question = "La primera generación de Hololive está compuesta por…",
+            question = "La cuarta generación de Hololive está compuesta por…",
             image = R.drawable.pregunta_treintaydos,
             optionOne = "Aqua, Ayame, Choco, Subaru y Shion",
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
@@ -358,7 +357,7 @@ object Constants {
 
         val question29 = Question(
             id = 1,
-            question = "¿Qué miembro de Hololive protagoniza una serie de cortos donde realiza actividades para niños?",
+            question = "¿Qué miembro de Hololive protagoniza una serie de cortos para niños?",
             image = R.drawable.pregunta_treintaycuatro,
             optionOne = "Botan",
             optionTwo = "Lamy",
@@ -488,7 +487,7 @@ object Constants {
         questionFourImageList.add(question3)
         val question4 = Question(
             id = 1,
-            question = "Selecciona la imagen que se corresponda con un Vtuber independiente",
+            question = "Selecciona a la Vtuber independiente",
             image = R.drawable.pregunta_opciones_4_1,
             image2 = R.drawable.pregunta_opciones_4_2,
             image3 = R.drawable.pregunta_opciones_4_3,
