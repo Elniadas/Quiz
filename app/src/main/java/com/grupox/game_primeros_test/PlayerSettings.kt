@@ -43,8 +43,11 @@ object PlayerSettings {
 
 
     fun buttonSound(sound: Int, context: Context) {
-        buttonSoundPlayer = MediaPlayer.create(context, sound)
-        buttonSoundPlayer!!.start()
+        if(played){
+            buttonSoundPlayer = MediaPlayer.create(context, sound)
+            buttonSoundPlayer!!.start()
+        }
+
     }
 
 

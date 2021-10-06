@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.041" />
 
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_confirmar_quiz"
 
@@ -40,10 +41,10 @@
         android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991" />
-
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer_Quiz"
