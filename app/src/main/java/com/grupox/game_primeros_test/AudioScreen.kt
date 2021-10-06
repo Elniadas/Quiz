@@ -18,6 +18,14 @@ class AudioScreen : Audio() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_screen)
+
+        adjustment_background.setImageResource(
+            resources.getIdentifier(
+                Constants.newBackGround,
+                "drawable",
+                packageName
+            )
+        )
         playAnimationOnEnter()
         bt_sound.setOnClickListener {
             play_stop()
@@ -25,8 +33,8 @@ class AudioScreen : Audio() {
         rb_5preguntas.setOnClickListener { PlayerSettings.nQuestions = 5 }
         rb_10preguntas.setOnClickListener { PlayerSettings.nQuestions = 10 }
         rb_15preguntas.setOnClickListener { PlayerSettings.nQuestions = 15 }
-        rb_max_preguntas.setOnClickListener { PlayerSettings.nQuestions = 40 }
         setupCustomSpinner()
+
     }
 
     private fun setupCustomSpinner() {
@@ -45,7 +53,14 @@ class AudioScreen : Audio() {
                 vtuberName += "_new"
 
                 Constants.newBackGround = vtuberName.lowercase()
-
+                adjustment_background.setImageResource(
+                    resources.getIdentifier(
+                        Constants.newBackGround,
+                        "drawable",
+                        packageName
+                    )
+                )
+                Vtubers.changeFirtsItem(position)
                 Toast.makeText(this@AudioScreen, "$vtuberName", Toast.LENGTH_SHORT)
                     .show()
             }

@@ -30,12 +30,12 @@ object Vtubers {
         "Achan",
         "Aki",
         "Aloe",
-        "Amelia",
+        "Ame",
         "Anya",
         "Aqua",
         "Azki",
         "Botan",
-        "Calliope",
+        "Calli",
         "Ina",
         "Iofi",
         "Kanata",
@@ -66,4 +66,10 @@ object Vtubers {
 
             return field
         }
+
+    fun changeFirtsItem(newPos: Int) {
+        var vtuberNuevo = list!![newPos]
+        list!![newPos] = list!![0]
+        list!![0] = vtuberNuevo
+    }
 }

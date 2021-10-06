@@ -2,10 +2,12 @@
     <string name="app_name">¡VTubers Trivia!</string>
     <string name="gameTitle">¿Sabes todo acerca de los VTubers?</string>
     <string name="jugar">Jugar</string>
+    <string name= "rejugar">Volver a jugar</string>
+    <string name= "menu">Menú principal</string>
     <string name="ajustes">Ajustes</string>
     <string name="fondo_principal">fondo de pantalla del menu principal</string>
     <string name="fondo_ajustes">fondo de pantalla del menu ajustes</string>
-    <string name="play_stop">Play/Stop</string>
+    <string name="play_stop">Parar/Reanudar</string>
     <string name="n_mero_de_preguntas">Número de preguntas</string>
     <string name="_15">15</string>
     <string name="_10">10</string>

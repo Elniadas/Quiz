@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bc"
+    android:background="@drawable/achan_new"
     tools:context=".AudioScreen">
 
     <ImageView
@@ -14,7 +14,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/fondo_ajustes"
         android:scaleType="centerCrop"
-        android:src="@drawable/pekora"
+        android:src="@drawable/achan_new"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,9 +26,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="288dp"
         android:text="@string/play_stop"
-        android:textColor="#8C9EFF"
+        android:textColor="@color/grey_font"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +38,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="100dp"
         android:text="@string/n_mero_de_preguntas"
-        android:textColor="@android:color/holo_purple"
+        android:textColor="@color/grey_font"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.635"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,10 +57,9 @@
         android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.054">
+        app:layout_constraintVertical_bias="0.051">
 
 
         <RadioButton
@@ -75,6 +74,7 @@
             android:text="@string/_5"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text_color"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="73dp"
@@ -93,6 +93,7 @@
             android:text="@string/_10"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text_color"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="172dp"
@@ -111,48 +112,31 @@
             android:text="@string/_15"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text_color"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="TouchTargetSizeCheck"
             tools:layout_editor_absoluteX="270dp"
             tools:layout_editor_absoluteY="158dp" />
 
-        <RadioButton
-            android:id="@+id/rb_max_preguntas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/radio_selector"
-            android:button="@android:color/transparent"
-            android:elevation="4dp"
-            android:minHeight="48dp"
-            android:text="MAX"
-            android:textAlignment="center"
-            android:textColor="@drawable/radio_text_color"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:layout_editor_absoluteX="270dp"
-            tools:layout_editor_absoluteY="158dp" />
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/customSpinner"
-        android:layout_width="match_parent"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_spinner"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.363" />
+        android:popupBackground="@drawable/bg_spinner_popup_window"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bt_sound"
         android:layout_width="172dp"
         android:layout_height="92dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

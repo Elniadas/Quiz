@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.activity_audio_screen.*
 import kotlinx.android.synthetic.main.activity_end.*
 
 class End_Activity : AppCompatActivity() {
@@ -30,7 +31,13 @@ class End_Activity : AppCompatActivity() {
             finish()
 
         }
-
+        end_background.setImageResource(
+            resources.getIdentifier(
+                Constants.newBackGround,
+                "drawable",
+                packageName
+            )
+        )
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

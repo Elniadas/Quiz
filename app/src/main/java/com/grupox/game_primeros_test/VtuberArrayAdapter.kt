@@ -21,7 +21,6 @@ class VtuberArrayAdapter(context: Context, vtuberList: List<Vtuber>) :
     private fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         val vtuber = getItem(position)
-
         val view = convertView ?: LayoutInflater.from(context)
             .inflate(R.layout.spinner_item, parent, false)
         view.vtuberImage.setImageResource(vtuber!!.image)
