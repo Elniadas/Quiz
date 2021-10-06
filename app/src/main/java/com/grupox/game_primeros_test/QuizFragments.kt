@@ -38,7 +38,7 @@ class QuizFragments : Audio() {
 
 
         bt_confirmar_quiz.setOnClickListener {
-            Log.i("PREGUNTAS: ", "Preguntas completadas : "+ _preguntasCompletadas)
+            Log.i("PREGUNTAS: ", "Preguntas completadas : " + _preguntasCompletadas)
 //            if (_preguntasCompletadas < nPreguntas) {
 //                if (PlayerSettings.questAnswered) {
 //                    bt_confirmar_quiz.text = "Siguiente"
@@ -54,23 +54,23 @@ class QuizFragments : Audio() {
 //            }
 
 //            PlayerSettings.buttonSound(R.raw.clic_audio,this)
-            if(_preguntasCompletadas==nPreguntas){
+            if (_preguntasCompletadas == nPreguntas) {
 
-                if(_fragments!![_currentFragment].isCompleted()){
+                if (_fragments!![_currentFragment].isCompleted()) {
                     val intent = Intent(this, End_Activity::class.java)
                     startActivity(intent)
                     finish()
-                }else{
+                } else {
                     if (!PlayerSettings.questAnswered) {
                         bt_confirmar_quiz.text = "Responde a la pregunta primero"
 
                     }
                 }
 
-            }else{
+            } else {
                 if (PlayerSettings.questAnswered) {
                     bt_confirmar_quiz.text = "Siguiente"
-                    if(_preguntasCompletadas==nPreguntas-1){
+                    if (_preguntasCompletadas == nPreguntas - 1) {
                         bt_confirmar_quiz.text = "Finalizar"
                     }
                     setFragment()
@@ -81,11 +81,6 @@ class QuizFragments : Audio() {
             }
 
 
-
-
-
-
-
         }
 
     }
@@ -93,6 +88,8 @@ class QuizFragments : Audio() {
 
     private fun updateProgressBar() {
         _preguntasCompletadas++
+        tv_texto_progress_bar.text =
+            _preguntasCompletadas.toString() + " / " + PlayerSettings.nQuestions.toString()
         pb_quiz.progress = _preguntasCompletadas
     }
 
@@ -128,7 +125,7 @@ class QuizFragments : Audio() {
         _currentFragment = nextFragment
         Log.i("current = a  :  ", _currentFragment.toString())
         updateProgressBar()
-        _fragments!![_currentFragment]=_fragments!![_currentFragment].Clone()
+        _fragments!![_currentFragment] = _fragments!![_currentFragment].Clone()
         replaceFragment(_fragments!![_currentFragment])
         /*
          if (nextFragment == _currentFragment) {

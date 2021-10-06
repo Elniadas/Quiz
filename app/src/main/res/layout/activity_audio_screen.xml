@@ -49,7 +49,7 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="347dp"
+        android:layout_width="wrap_content"
         android:layout_height="77dp"
         android:orientation="horizontal"
         android:padding="15dp"
@@ -109,6 +109,23 @@
             android:elevation="4dp"
             android:minHeight="48dp"
             android:text="@string/_15"
+            android:textAlignment="center"
+            android:textColor="@drawable/radio_text_color"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="270dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/rb_max_preguntas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:minHeight="48dp"
+            android:text="MAX"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text_color"
             android:textStyle="bold"
