@@ -23,7 +23,8 @@ object PlayerSettings {
         if (player == null) {
 
             player = MediaPlayer.create(context, R.raw.background_music)
-            player!!.setVolume(0.15f,0.15f)
+            player!!.setVolume(0.15f, 0.15f)
+            player!!.isLooping = true
         }
         player!!.start()
         played = true
