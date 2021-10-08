@@ -3,14 +3,9 @@ package com.grupox.game_primeros_test
 import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE
-import android.content.res.Configuration
-import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.app.KeyguardManager
-import android.content.Context
 
 
 open class Audio : AppCompatActivity() {

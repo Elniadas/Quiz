@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_audio_screen.*
 import kotlinx.android.synthetic.main.activity_end.*
 
 class End_Activity : AppCompatActivity() {

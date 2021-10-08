@@ -1,13 +1,8 @@
 package com.grupox.game_primeros_test
 
 import android.content.Context
-import android.content.Context.AUDIO_SERVICE
-import android.media.AudioManager
 import android.media.MediaPlayer
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 
 
 object PlayerSettings {

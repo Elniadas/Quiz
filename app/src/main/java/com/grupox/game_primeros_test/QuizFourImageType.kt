@@ -94,12 +94,10 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
 
     private fun setQuestion() {
         _isCompleted = false
-        println("Quedan 4 im antes: " + Constants.questionFourImageList.size)
         var questPosition = Random.nextInt(Constants.questionFourImageList.size)
         setDefaultOptionsView()
         val question: Question = Constants.questionFourImageList[questPosition]
         Constants.questionFourImageList.removeAt(questPosition)
-        println("Quedan 4 im después : " + Constants.questionFourImageList.size)
         mQuestion = question
         var a = activity as QuizFragments
         a.cambiarTexto(question.question)

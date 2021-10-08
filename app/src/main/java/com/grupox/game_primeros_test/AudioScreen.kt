@@ -1,13 +1,10 @@
 package com.grupox.game_primeros_test
 
-import android.content.Intent
 import android.os.Bundle
 import android.media.AudioManager
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_audio_screen.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class AudioScreen : Audio() {
 
@@ -61,8 +58,6 @@ class AudioScreen : Audio() {
                     )
                 )
                 Vtubers.changeFirtsItem(position)
-                Toast.makeText(this@AudioScreen, "$vtuberName", Toast.LENGTH_SHORT)
-                    .show()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
