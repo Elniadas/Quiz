@@ -1,12 +1,12 @@
 package com.grupox.game_primeros_test
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
-import kotlinx.android.synthetic.main.activity_quiz_questions_old.bt_confirmar_quiz
 import kotlin.random.Random
 
 class QuizFragments : Audio() {
@@ -18,6 +18,7 @@ class QuizFragments : Audio() {
     var _preguntasCompletadas = 0
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions_old)
@@ -85,6 +86,7 @@ class QuizFragments : Audio() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun updateProgressBar() {
         _preguntasCompletadas++
         tv_texto_progress_bar.text =
@@ -98,16 +100,16 @@ class QuizFragments : Audio() {
 
     private fun replaceFragment(fragment: Fragment) {
 
-        val fragmentManager = supportFragmentManager;
-        val fragmentTransaction = fragmentManager.beginTransaction();
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             R.anim.slide_in, R.anim.fade_out,
             R.anim.fade_in, R.anim.slide_out
         )
 
-        fragmentTransaction.replace(R.id.fragmentContainer_Quiz, fragment);
+        fragmentTransaction.replace(R.id.fragmentContainer_Quiz, fragment)
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-        fragmentTransaction.commit();
+        fragmentTransaction.commit()
 
 
     }
