@@ -5,6 +5,7 @@ object Constants {
     var questionImageList: ArrayList<Question>? = null
     var questionGifList: ArrayList<Question> = ArrayList()
     var questionFourImageList: ArrayList<Question> = ArrayList()
+    var questionVideoList: ArrayList<Question> = ArrayList();
     var newBackGround: String = ""
         get() {
             if (field == "") {
@@ -12,6 +13,132 @@ object Constants {
             }
             return field
         }
+
+    fun getVideoQuestion(): ArrayList<Question> {
+        questionVideoList = ArrayList()
+
+        val question1 = Question(
+            id = 1,
+            question = "¿Qué dos Vtubers aparecen en esta animación?",
+            image = R.raw.pregunta_video_1,
+            optionOne = "Marine y Pekora",
+            optionTwo = "Marine y Polka",
+            optionThree = "Polka y Lamy",
+            optionFour = "Polka y Rushia",
+            correctAnswer = 2
+        )
+        questionVideoList.add(question1)
+
+        val question2 = Question(
+            id = 1,
+            question = "¿De qué vtuber es este saludo?",
+            image = R.raw.pregunta_video_2,
+            optionOne = "Uruha Rushia",
+            optionTwo = "Houshou Marine",
+            optionThree = "Kiryu Coco",
+            optionFour = "Usada Pekora",
+            correctAnswer = 4
+        )
+        questionVideoList.add(question2)
+
+        val question3 = Question(
+            id = 1,
+            question = "¿Quién canta este cover de la canción 'Goodbye Declaration'?",
+            image = R.raw.pregunta_video_3,
+            optionOne = "Uruha Rushia",
+            optionTwo = "Gawr Gura",
+            optionThree = "Calliope Mori",
+            optionFour = "Tsunomaki Watame",
+            correctAnswer = 1
+        )
+        questionVideoList.add(question3)
+
+        val question4 = Question(
+            id = 1,
+            question = "¿Quién es la protagonista de este clip?",
+            image = R.raw.pregunta_video_4,
+            optionOne = "Nanashi Mumei",
+            optionTwo = "Nakiri Ayame",
+            optionThree = "Takanashi Kiara",
+            optionFour = "Fauna Ceres",
+            correctAnswer = 2
+        )
+        questionVideoList.add(question4)
+
+        val question5 = Question(
+            id = 1,
+            question = "¿Quién es la protagonista de este clip?",
+            image = R.raw.pregunta_video_5,
+            optionOne = "Shirogane Noel",
+            optionTwo = "Shiranui Flare",
+            optionThree = "Sakura Miko",
+            optionFour = "Yozora Mel",
+            correctAnswer = 3
+        )
+        questionVideoList.add(question5)
+
+        val question6 = Question(
+            id = 1,
+            question = "En este meme, ¿cuál es la canción que se usa de base?",
+            image = R.raw.pregunta_video_6,
+            optionOne = "Before I knew you",
+            optionTwo = "Somebody that I used to know",
+            optionThree = "I know You too well",
+            optionFour = "Someone I knew",
+            correctAnswer = 2
+        )
+        questionVideoList.add(question6)
+
+        val question7 = Question(
+            id = 1,
+            question = "En esta animación, ¿a qué juego estaban jugando Korone y Calliope?",
+            image = R.raw.pregunta_video_7,
+            optionOne = "Keep Talking and Nobody Explodes",
+            optionTwo = "Minecraft",
+            optionThree = "1-2-Switch",
+            optionFour = "Mario Party",
+            correctAnswer = 1
+        )
+        questionVideoList.add(question7)
+
+        val question8 = Question(
+            id = 1,
+            question = "En esta animación, ¿a que famosa película de los 90 se hace referencia?",
+            image = R.raw.pregunta_video_8,
+            optionOne = "Star Wars: Episodio V - El Imperio contraataca",
+            optionTwo = "Indiana Jones y la última cruzada",
+            optionThree = "Terminator 2",
+            optionFour = "Regreso al futuro 3",
+            correctAnswer = 3
+        )
+        questionVideoList.add(question8)
+
+        val question9 = Question(
+            id = 1,
+            question = "En esta animación, ¿quién es la protagonista?",
+            image = R.raw.pregunta_video_9,
+            optionOne = "Yuzuki Choco",
+            optionTwo = "Oozora Subaru",
+            optionThree = "Akai Haato",
+            optionFour = "Omaru Polka",
+            correctAnswer = 2
+        )
+        questionVideoList.add(question9)
+
+        val question10 = Question(
+            id = 1,
+            question = "¿Quién canta esta canción original?",
+            image = R.raw.pregunta_video_10,
+            optionOne = "Shirakami Fubuki",
+            optionTwo = "Tokoyami Towa",
+            optionThree = "Shishiro Botan",
+            optionFour = "Gawr Gura",
+            correctAnswer = 4
+        )
+        questionVideoList.add(question10)
+
+        return questionVideoList
+    }
 
     fun getImageQuestions(): ArrayList<Question> {
 
@@ -523,6 +650,9 @@ object Constants {
 
         val fragment3 = QuizFourImageType()
         listFragment.add(fragment3)
+
+        val fragment4 = QuizVideoType()
+        listFragment.add(fragment4)
 
         return listFragment
     }

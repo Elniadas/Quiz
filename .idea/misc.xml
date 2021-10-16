@@ -59,15 +59,16 @@
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_end.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions.xml" value="0.264" />
-        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.264" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_gif.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_image.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_quiz_four_image_type.xml" value="0.1" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_quiz_video_type.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/spinner_item.xml" value="0.259375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

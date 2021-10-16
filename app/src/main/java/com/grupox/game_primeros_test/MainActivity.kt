@@ -7,14 +7,14 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-
+var PACKAGE_NAME: String? = null
 class MainActivity : Audio() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
+        PACKAGE_NAME = applicationContext.packageName;
 //        window.decorView.apply {
 //            systemUiVisibility =
 //                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN

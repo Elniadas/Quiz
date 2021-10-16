@@ -27,7 +27,7 @@ class QuizFragments : Audio() {
         Constants.getImageQuestions()
         Constants.getGifQuestions()
         Constants.getFourImageQuestions()
-
+        Constants.getVideoQuestion()
         //Initialize variables
         _fragments = Constants.getFragments()
         PlayerSettings.rightQuestions = 0
