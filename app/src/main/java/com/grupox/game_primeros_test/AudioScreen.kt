@@ -31,7 +31,7 @@ class AudioScreen : Audio() {
         rb_10preguntas.setOnClickListener { PlayerSettings.nQuestions = 10 }
         rb_15preguntas.setOnClickListener { PlayerSettings.nQuestions = 15 }
         setupCustomSpinner()
-
+        Constants.read()
     }
 
     private fun setupCustomSpinner() {

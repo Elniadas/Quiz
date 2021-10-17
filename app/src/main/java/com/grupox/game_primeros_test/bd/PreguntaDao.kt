@@ -1,26 +1,34 @@
 package com.grupox.game_primeros_test.bd
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface PreguntaDao {
 
-    @Insert
-    fun addPregunta(pregunta:Pregunta)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addPregunta(pregunta: Pregunta)
 
     @Query("SELECT * FROM Pregunta")
-    fun getAllPreguntas():List<Pregunta>
+     fun getAllPreguntas(): LiveData<List<Pregunta>>
+
+    @Query("SELECT * FROM Pregunta")
+    fun getAllPreguntasEstatico(): List<Pregunta>
+
 
     @Query("SELECT * FROM Pregunta WHERE id= :id")
-    fun getPregunta(id:Int):Pregunta
+    suspend fun getPregunta(id: Int): Pregunta
+
+    @Query("SELECT * FROM Pregunta WHERE type= :type")
+    fun getAllPreguntasOfType(type:String): LiveData<List<Pregunta>>
 
     @Insert
-    fun addMultplePreguntas(vararg pregunta: Pregunta)
+    suspend fun addMultplePreguntas(vararg pregunta: Pregunta)
 
     @Update
-    fun update(pregunta:Pregunta)
+    suspend fun update(pregunta: Pregunta)
 
     @Delete
-    fun delete(pregunta: Pregunta)
+    suspend fun delete(pregunta: Pregunta)
 
 }

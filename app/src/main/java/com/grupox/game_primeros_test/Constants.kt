@@ -1,10 +1,32 @@
 package com.grupox.game_primeros_test
 
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Pregunta
+import com.grupox.game_primeros_test.bd.PreguntaViewModel
+import com.grupox.game_primeros_test.bd.PreguntasDataBase
+
 object Constants {
+
+    const val IMAGE = "Image"
+    const val GIF = "Gif"
+    const val FOURIMAGE = "FourImage"
 
     var questionImageList: ArrayList<Question>? = null
     var questionGifList: ArrayList<Question> = ArrayList()
     var questionFourImageList: ArrayList<Question> = ArrayList()
+
+
+    lateinit var questionGifListAux: ArrayList<Pregunta>
+    lateinit var questionImageListAux: ArrayList<Pregunta>
+    lateinit var questionFourImageListAux: ArrayList<Pregunta>
+
+
+    private lateinit var _PreguntaViewModer: PreguntaViewModel
+
     var newBackGround: String = ""
         get() {
             if (field == "") {
@@ -25,6 +47,7 @@ object Constants {
             optionTwo = "Let’s kill da h*e",
             optionThree = "Let’s go moth*rfuck*r",
             optionFour = "Let’s f*ck",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question1)
@@ -37,6 +60,7 @@ object Constants {
             optionTwo = "El directo se corta de golpe porque se le va la luz",
             optionThree = "Miko, sin saber lo que significa, dice Nig*a de forma melódica ",
             optionFour = "Ella pensando que está silenciada se pone a hablar de cosas personales",
+            type = IMAGE,
             correctAnswer = 3
         )
 
@@ -50,6 +74,7 @@ object Constants {
             optionTwo = "Hololive SuperStars",
             optionThree = "HoloMyth",
             optionFour = "OKFAMS",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question3)
@@ -63,6 +88,7 @@ object Constants {
             optionTwo = "Lamy",
             optionThree = "Nene",
             optionFour = "Botan",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question4)
@@ -75,6 +101,7 @@ object Constants {
             optionTwo = "Porque su internet era muy malo y tenía cortes de conexión",
             optionThree = "Porque hacía muy pocos directos",
             optionFour = "Porque sus directos eran muy cortos",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question5)
@@ -87,6 +114,7 @@ object Constants {
             optionTwo = "AsaCoco Live",
             optionThree = "News with Coco",
             optionFour = "Coco Daily",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question6)
@@ -99,6 +127,7 @@ object Constants {
             optionTwo = "Holo no Animation",
             optionThree = "Holo no Graffiti",
             optionFour = "Hololive!",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question7)
@@ -111,6 +140,7 @@ object Constants {
             optionTwo = "Una abreviación de “ángel bondadoso” en japonés",
             optionThree = "En su debut usó una presentación de PowerPoint para presentarse",
             optionFour = "Es un mote que le pusieron sus compañeros",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question8)
@@ -123,6 +153,7 @@ object Constants {
             optionTwo = "A su corpulencia",
             optionThree = "A que en un directo dijo que tenía una fuerza de agarre de más de 50kg",
             optionFour = "A su altura",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question9)
@@ -135,6 +166,7 @@ object Constants {
             optionTwo = "Suele morir con facilidad en los juegos",
             optionThree = "Cuando se pone a hablar se desconcentra y se olvida de lo que está haciendo",
             optionFour = "Que siempre está gastando bromas a los demás miembros",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question10)
@@ -147,6 +179,7 @@ object Constants {
             optionTwo = "Su hermana",
             optionThree = "Su madre",
             optionFour = "Su amiga",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question11)
@@ -159,6 +192,7 @@ object Constants {
             optionTwo = "21",
             optionThree = "17",
             optionFour = "19",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question12)
@@ -171,6 +205,7 @@ object Constants {
             optionTwo = "Segunda generación de Hololive",
             optionThree = "Tercera generación de Hololive",
             optionFour = "Cuarta generación de Hololive",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question13)
@@ -183,6 +218,7 @@ object Constants {
             optionTwo = "Kanata, Coco, Luna, Towa y Watame",
             optionThree = "Fubuki, Matsuri, Mel, Aki y Akai Haato",
             optionFour = "Choco, Subaru, Ayame, Shion y Aqua",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question14)
@@ -195,6 +231,7 @@ object Constants {
             optionTwo = "Graduación",
             optionThree = "Desaparición",
             optionFour = "Finalización",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question15)
@@ -207,6 +244,7 @@ object Constants {
             optionTwo = "Korone",
             optionThree = "Fubuki",
             optionFour = "Sora",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question16)
@@ -219,6 +257,7 @@ object Constants {
             optionTwo = "Más de 100",
             optionThree = "Más de 1000",
             optionFour = "Más de 10000",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question17)
@@ -231,6 +270,7 @@ object Constants {
             optionTwo = "Hololive",
             optionThree = "Vshojo",
             optionFour = "Nijisanji",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question18)
@@ -243,6 +283,7 @@ object Constants {
             optionTwo = "La voluntad",
             optionThree = "Las manos",
             optionFour = "Los labios",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question19)
@@ -255,6 +296,7 @@ object Constants {
             optionTwo = "Akai Haato",
             optionThree = "Inugane Korone",
             optionFour = "Shirogane Noel",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question20)
@@ -267,6 +309,7 @@ object Constants {
             optionTwo = "Hitomi Chris",
             optionThree = "Yuzuki Choco",
             optionFour = "Ookami Mio",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question21)
@@ -279,6 +322,7 @@ object Constants {
             optionTwo = "Hololive China, Hololive Japan, Hololive Indonesia y Hololive English",
             optionThree = "Hololive Japan y Hololive English",
             optionFour = "Hololive Japan, Hololive Indonesia y Hololive English",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question22)
@@ -291,6 +335,7 @@ object Constants {
             optionTwo = "Vshojo",
             optionThree = "VOMS",
             optionFour = "Hololive",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question23)
@@ -303,6 +348,7 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 2
         )
         questionImageList!!.add(question24)
@@ -315,6 +361,7 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question25)
@@ -327,6 +374,7 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question26)
@@ -339,6 +387,7 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 3
         )
         questionImageList!!.add(question27)
@@ -351,6 +400,7 @@ object Constants {
             optionTwo = "Era camarera",
             optionThree = "Era escritora",
             optionFour = "Era cocinera",
+            type = IMAGE,
             correctAnswer = 1
         )
         questionImageList!!.add(question28)
@@ -363,6 +413,7 @@ object Constants {
             optionTwo = "Lamy",
             optionThree = "Coco",
             optionFour = "Watame",
+            type = IMAGE,
             correctAnswer = 4
         )
         questionImageList!!.add(question29)
@@ -382,6 +433,7 @@ object Constants {
             optionTwo = "Mio",
             optionThree = "Luna",
             optionFour = "Subaru",
+            type = GIF,
             correctAnswer = 4
         )
         questionGifList.add(question1)
@@ -394,6 +446,7 @@ object Constants {
             optionTwo = "Representa a la madre naturaleza",
             optionThree = "Es una semi-diosa",
             optionFour = "Es una gacela",
+            type = GIF,
             correctAnswer = 2
         )
         questionGifList.add(question2)
@@ -406,6 +459,7 @@ object Constants {
             optionTwo = "Cabra",
             optionThree = "Carnero",
             optionFour = "Toro",
+            type = GIF,
             correctAnswer = 1
         )
         questionGifList.add(question3)
@@ -418,6 +472,7 @@ object Constants {
             optionTwo = "Segunda generación de Hololive",
             optionThree = "Tercera generación de Hololive",
             optionFour = "Cuarta generación de Hololive",
+            type = GIF,
             correctAnswer = 3
         )
         questionGifList.add(question4)
@@ -430,6 +485,7 @@ object Constants {
             optionTwo = "Inuyama Tamaki",
             optionThree = "Nachoneko",
             optionFour = "Nabi",
+            type = GIF,
             correctAnswer = 1
         )
 
@@ -443,6 +499,7 @@ object Constants {
             optionTwo = "Takodachis",
             optionThree = "Octochans",
             optionFour = "Takochis",
+            type = GIF,
             correctAnswer = 2
         )
 
@@ -461,6 +518,7 @@ object Constants {
             image2 = R.drawable.pregunta_opciones_1_2,
             image3 = R.drawable.pregunta_opciones_1_3,
             image4 = R.drawable.pregunta_opciones_1_4,
+            type = FOURIMAGE,
             correctAnswer = 1
         )
         questionFourImageList.add(question1)
@@ -472,6 +530,7 @@ object Constants {
             image2 = R.drawable.pregunta_opciones_2_2,
             image3 = R.drawable.pregunta_opciones_2_3,
             image4 = R.drawable.pregunta_opciones_2_4,
+            type = FOURIMAGE,
             correctAnswer = 3
         )
         questionFourImageList.add(question2)
@@ -482,6 +541,7 @@ object Constants {
             image2 = R.drawable.pregunta_opciones_3_2,
             image3 = R.drawable.pregunta_opciones_3_3,
             image4 = R.drawable.pregunta_opciones_3_4,
+            type = FOURIMAGE,
             correctAnswer = 2
         )
         questionFourImageList.add(question3)
@@ -492,6 +552,7 @@ object Constants {
             image2 = R.drawable.pregunta_opciones_4_2,
             image3 = R.drawable.pregunta_opciones_4_3,
             image4 = R.drawable.pregunta_opciones_4_4,
+            type = FOURIMAGE,
             correctAnswer = 3
         )
         questionFourImageList.add(question4)
@@ -502,6 +563,7 @@ object Constants {
             image2 = R.drawable.pregunta_opciones_5_2,
             image3 = R.drawable.pregunta_opciones_5_3,
             image4 = R.drawable.pregunta_opciones_5_4,
+            type = FOURIMAGE,
             correctAnswer = 1
         )
         questionFourImageList.add(question5)
@@ -526,5 +588,80 @@ object Constants {
 
         return listFragment
     }
+
+
+    fun createALLQuestion(app: AppCompatActivity) {
+//
+//        var lista1 = getImageQuestions()
+//        var lista2 = getFourImageQuestions()
+//        var lista3 = getGifQuestions()
+
+//        val question5 = Pregunta(
+//            id = 0,
+//            question = "Selecciossna la imagsssen que se cordasd12responda con un miembro de Hololive Gamers:",
+//            image = R.drawable.pregunta_opciones_3_1,
+//            image2 = R.drawable.pregunta_opciones_5_2,
+//            image3 = R.drawable.pregunta_opciones_2_3,
+//            image4 = R.drawable.pregunta_opciones_5_4,
+//            correctAnswer = 3
+//        )
+////
+//        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+//        s.addUser(question5)
+//        Toast.makeText(app,"Compelted",Toast.LENGTH_LONG).show()
+//        Log.d("","ASDasdasdqwdSDadwdqs")
+
+
+    }
+
+
+    fun getPreguntasImage(app: AppCompatActivity) {
+        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+
+        s.readAllDataTypeGif.observe(app, Observer { pregunta ->
+            questionGifListAux= ArrayList(pregunta)
+
+        })
+
+        s.readAllDataTypeImage.observe(app, Observer { pregunta ->
+            questionImageListAux= ArrayList(pregunta)
+
+        })
+        s.readAllDataTypeFourImages.observe(app, Observer { pregunta ->
+            questionFourImageListAux= ArrayList(pregunta)
+
+        })
+
+    }
+
+    fun read(){
+        questionFourImageListAux.toString()
+        questionImageListAux.toString()
+        questionGifListAux.toString()
+    }
+
+    fun axus(app: AppCompatActivity) {
+        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+
+
+        val question5 = Pregunta(
+            id = 0,
+            question = "Selecciossna la imagsssen que se cordasd12responda con un miembro de Hololive Gamers:",
+            image = R.drawable.pregunta_opciones_3_1,
+            image2 = R.drawable.pregunta_opciones_5_2,
+            image3 = R.drawable.pregunta_opciones_2_3,
+            image4 = R.drawable.pregunta_opciones_5_4,
+            type = "gasd",
+            correctAnswer = 3
+        )
+
+
+
+        s.addPregunta(question5)
+
+        s.readAllData.observe(app, Observer { pregunta -> Log.i("LEEE", pregunta.toString()) })
+
+    }
+
 
 }

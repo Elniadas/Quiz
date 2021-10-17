@@ -8,7 +8,8 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Pregunta::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 
 abstract class PreguntasDataBase: RoomDatabase() {
@@ -16,21 +17,37 @@ abstract class PreguntasDataBase: RoomDatabase() {
         abstract fun getPreguntaDao():PreguntaDao
 
         companion object{
-            @Volatile private var instance  : PreguntasDataBase? = null //hace que sea accesible por todos en cualquier momento
+            @Volatile private var INSTANCE  : PreguntasDataBase? = null //hace que sea accesible por todos en cualquier momento
 
-            private val LOCK = Any()
-
-            operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-                instance ?: buildDatabase(context).also {
-                    instance=it
+            fun getDatabase(context: Context):PreguntasDataBase{
+                val tempInstance = INSTANCE
+                if(tempInstance!=null){
+                    return tempInstance
                 }
+             synchronized(this){
+                 val instance = Room.databaseBuilder(
+                     context.applicationContext,
+                     PreguntasDataBase::class.java,
+                     "preguntas_database"
+                 ).build()
+                 INSTANCE=instance
+                 return instance
+             }
             }
 
-            private fun buildDatabase(context: Context) = Room.databaseBuilder(
-                context.applicationContext,
-                PreguntasDataBase::class.java,
-                "preguntasdatabase"
-            ).build()
+
+//            private val LOCK = Any()
+//            operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
+//                instance ?: buildDatabase(context).also {
+//                    instance=it
+//                }
+//            }
+//
+//            private fun buildDatabase(context: Context) = Room.databaseBuilder(
+//                context.applicationContext,
+//                PreguntasDataBase::class.java,
+//                "preguntasdatabase"
+//            ).build()
 
         }
 

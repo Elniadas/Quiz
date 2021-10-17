@@ -11,6 +11,8 @@ data class Question(
     val optionTwo: String? = null,
     val optionThree: String? = null,
     val optionFour: String? = null,
+    val type : String,
     val correctAnswer: Int
+
 
 )
