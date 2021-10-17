@@ -38,6 +38,8 @@ class MainActivity : Audio() {
             startActivity(intent)
         }
 
+        Constants.getPreguntasImage(this)
+
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

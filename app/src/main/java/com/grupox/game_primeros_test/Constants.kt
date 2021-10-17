@@ -1,10 +1,12 @@
 package com.grupox.game_primeros_test
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.grupox.game_primeros_test.bd.Pregunta
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
+import kotlin.math.log
 
 object Constants {
 
@@ -16,8 +18,6 @@ object Constants {
     lateinit var questionGifListAux: ArrayList<Pregunta>
     lateinit var questionImageListAux: ArrayList<Pregunta>
     lateinit var questionFourImageListAux: ArrayList<Pregunta>
-
-
 
 
     var newBackGround: String = ""
@@ -653,43 +653,30 @@ object Constants {
     }
 
 
-
-
     fun getPreguntasImage(app: AppCompatActivity) {
         var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
 
         s.readAllDataTypeGif.observe(app, Observer { pregunta ->
-            questionGifListAux= ArrayList(pregunta)
+            questionGifListAux = ArrayList(pregunta)
 
         })
 
         s.readAllDataTypeImage.observe(app, Observer { pregunta ->
-            questionImageListAux= ArrayList(pregunta)
+            questionImageListAux = ArrayList(pregunta)
 
         })
         s.readAllDataTypeFourImages.observe(app, Observer { pregunta ->
-            questionFourImageListAux= ArrayList(pregunta)
+            questionFourImageListAux = ArrayList(pregunta)
 
         })
 
     }
 
-    fun read(){
-        questionFourImageListAux.toString()
-        questionImageListAux.toString()
-        questionGifListAux.toString()
+    fun read() {
+        Log.i("asdwdqwe", questionFourImageListAux.toString())
+        Log.i("asdwdqwe", questionImageListAux.toString())
+        Log.i("asdwdqwe", questionGifListAux.toString())
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     fun getFragments(): ArrayList<QuizBaseTypeFragment> {
