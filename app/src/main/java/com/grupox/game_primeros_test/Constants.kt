@@ -1,11 +1,25 @@
 package com.grupox.game_primeros_test
 
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Pregunta
+import com.grupox.game_primeros_test.bd.PreguntaViewModel
+
 object Constants {
 
     var questionImageList: ArrayList<Question>? = null
     var questionGifList: ArrayList<Question> = ArrayList()
     var questionFourImageList: ArrayList<Question> = ArrayList()
     var questionVideoList: ArrayList<Question> = ArrayList();
+
+    lateinit var questionGifListAux: ArrayList<Pregunta>
+    lateinit var questionImageListAux: ArrayList<Pregunta>
+    lateinit var questionFourImageListAux: ArrayList<Pregunta>
+
+
+
+
     var newBackGround: String = ""
         get() {
             if (field == "") {
@@ -637,6 +651,46 @@ object Constants {
         return questionFourImageList
 
     }
+
+
+
+
+    fun getPreguntasImage(app: AppCompatActivity) {
+        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+
+        s.readAllDataTypeGif.observe(app, Observer { pregunta ->
+            questionGifListAux= ArrayList(pregunta)
+
+        })
+
+        s.readAllDataTypeImage.observe(app, Observer { pregunta ->
+            questionImageListAux= ArrayList(pregunta)
+
+        })
+        s.readAllDataTypeFourImages.observe(app, Observer { pregunta ->
+            questionFourImageListAux= ArrayList(pregunta)
+
+        })
+
+    }
+
+    fun read(){
+        questionFourImageListAux.toString()
+        questionImageListAux.toString()
+        questionGifListAux.toString()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     fun getFragments(): ArrayList<QuizBaseTypeFragment> {
 
