@@ -10,7 +10,7 @@ class PreguntasRepository(private val preguntaDao: PreguntaDao) {
     val readAllDataTypeGif: LiveData<List<Pregunta>> = preguntaDao.getAllPreguntasOfType("Gif")
     val readAllDataTypeFourImages: LiveData<List<Pregunta>> =
         preguntaDao.getAllPreguntasOfType("FourImage")
-
+    val readAllDataTypeVideo: LiveData<List<Pregunta>> = preguntaDao.getAllPreguntasOfType("Video")
 
     suspend fun addPregunta(pregunta: Pregunta) {
         preguntaDao.addPregunta(pregunta)

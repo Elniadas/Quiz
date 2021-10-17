@@ -1,165 +1,39 @@
 package com.grupox.game_primeros_test
 
+import android.os.Debug
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.grupox.game_primeros_test.bd.Pregunta
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
-import kotlin.math.log
+import com.grupox.game_primeros_test.bd.PreguntasDataBase
 
-object Constants {
-
-    var questionImageList: ArrayList<Question>? = null
-    var questionGifList: ArrayList<Question> = ArrayList()
-    var questionFourImageList: ArrayList<Question> = ArrayList()
-    var questionVideoList: ArrayList<Question> = ArrayList();
-
-    lateinit var questionGifListAux: ArrayList<Pregunta>
-    lateinit var questionImageListAux: ArrayList<Pregunta>
-    lateinit var questionFourImageListAux: ArrayList<Pregunta>
-    lateinit var questionVideoListAux: ArrayList<Pregunta>
+object AUXCREARDATA {
 
 
-    var newBackGround: String = ""
-        get() {
-            if (field == "") {
-                return "achan_new"
-            }
-            return field
-        }
+    const val IMAGE = "Image"
+    const val GIF = "Gif"
+    const val FOURIMAGE = "FourImage"
+    const val VIDEO = "Video"
+    var PreguntaImageList: ArrayList<Pregunta>? = null
+    var PreguntaGifList: ArrayList<Pregunta> = ArrayList()
+    var PreguntaFourImageList: ArrayList<Pregunta> = ArrayList()
+    var PreguntaVideoList: ArrayList<Pregunta> = ArrayList()
+    private lateinit var _PreguntaViewModer: PreguntaViewModel
+    lateinit var mViewModel: PreguntaViewModel
 
-    fun getVideoQuestion(): ArrayList<Question> {
-        questionVideoList = ArrayList()
 
-        val question1 = Question(
-            id = 1,
-            question = "¿Qué dos Vtubers aparecen en esta animación?",
-            image = R.raw.pregunta_video_1,
-            optionOne = "Marine y Pekora",
-            optionTwo = "Marine y Polka",
-            optionThree = "Polka y Lamy",
-            optionFour = "Polka y Rushia",
-            correctAnswer = 2
-        )
-        questionVideoList.add(question1)
-
-        val question2 = Question(
-            id = 1,
-            question = "¿De qué vtuber es este saludo?",
-            image = R.raw.pregunta_video_2,
-            optionOne = "Uruha Rushia",
-            optionTwo = "Houshou Marine",
-            optionThree = "Kiryu Coco",
-            optionFour = "Usada Pekora",
-            correctAnswer = 4
-        )
-        questionVideoList.add(question2)
-
-        val question3 = Question(
-            id = 1,
-            question = "¿Quién canta este cover de la canción 'Goodbye Declaration'?",
-            image = R.raw.pregunta_video_3,
-            optionOne = "Uruha Rushia",
-            optionTwo = "Gawr Gura",
-            optionThree = "Calliope Mori",
-            optionFour = "Tsunomaki Watame",
-            correctAnswer = 1
-        )
-        questionVideoList.add(question3)
-
-        val question4 = Question(
-            id = 1,
-            question = "¿Quién es la protagonista de este clip?",
-            image = R.raw.pregunta_video_4,
-            optionOne = "Nanashi Mumei",
-            optionTwo = "Nakiri Ayame",
-            optionThree = "Takanashi Kiara",
-            optionFour = "Fauna Ceres",
-            correctAnswer = 2
-        )
-        questionVideoList.add(question4)
-
-        val question5 = Question(
-            id = 1,
-            question = "¿Quién es la protagonista de este clip?",
-            image = R.raw.pregunta_video_5,
-            optionOne = "Shirogane Noel",
-            optionTwo = "Shiranui Flare",
-            optionThree = "Sakura Miko",
-            optionFour = "Yozora Mel",
-            correctAnswer = 3
-        )
-        questionVideoList.add(question5)
-
-        val question6 = Question(
-            id = 1,
-            question = "En este meme, ¿cuál es la canción que se usa de base?",
-            image = R.raw.pregunta_video_6,
-            optionOne = "Before I knew you",
-            optionTwo = "Somebody that I used to know",
-            optionThree = "I know You too well",
-            optionFour = "Someone I knew",
-            correctAnswer = 2
-        )
-        questionVideoList.add(question6)
-
-        val question7 = Question(
-            id = 1,
-            question = "En esta animación, ¿a qué juego estaban jugando Korone y Calliope?",
-            image = R.raw.pregunta_video_7,
-            optionOne = "Keep Talking and Nobody Explodes",
-            optionTwo = "Minecraft",
-            optionThree = "1-2-Switch",
-            optionFour = "Mario Party",
-            correctAnswer = 1
-        )
-        questionVideoList.add(question7)
-
-        val question8 = Question(
-            id = 1,
-            question = "En esta animación, ¿a que famosa película de los 90 se hace referencia?",
-            image = R.raw.pregunta_video_8,
-            optionOne = "Star Wars: Episodio V - El Imperio contraataca",
-            optionTwo = "Indiana Jones y la última cruzada",
-            optionThree = "Terminator 2",
-            optionFour = "Regreso al futuro 3",
-            correctAnswer = 3
-        )
-        questionVideoList.add(question8)
-
-        val question9 = Question(
-            id = 1,
-            question = "En esta animación, ¿quién es la protagonista?",
-            image = R.raw.pregunta_video_9,
-            optionOne = "Yuzuki Choco",
-            optionTwo = "Oozora Subaru",
-            optionThree = "Akai Haato",
-            optionFour = "Omaru Polka",
-            correctAnswer = 2
-        )
-        questionVideoList.add(question9)
-
-        val question10 = Question(
-            id = 1,
-            question = "¿Quién canta esta canción original?",
-            image = R.raw.pregunta_video_10,
-            optionOne = "Shirakami Fubuki",
-            optionTwo = "Tokoyami Towa",
-            optionThree = "Shishiro Botan",
-            optionFour = "Gawr Gura",
-            correctAnswer = 4
-        )
-        questionVideoList.add(question10)
-
-        return questionVideoList
+    fun inicializar (app: AppCompatActivity){
+        mViewModel= ViewModelProvider(app).get(PreguntaViewModel::class.java)
     }
 
-    fun getImageQuestions(): ArrayList<Question> {
+    fun getImagePreguntas(): ArrayList<Pregunta> {
 
-        questionImageList = ArrayList()
+        PreguntaImageList = ArrayList()
 
-        val question1 = Question(
+        val Pregunta1 = Pregunta(
             id = 1,
             question = "¿Qué dice Tomoshika en inglés que hace que Pikamee estalle de risa?",
             image = R.drawable.pregunta_uno,
@@ -167,11 +41,12 @@ object Constants {
             optionTwo = "Let’s kill da h*e",
             optionThree = "Let’s go moth*rfuck*r",
             optionFour = "Let’s f*ck",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question1)
+        PreguntaImageList!!.add(Pregunta1)
 
-        val question2 = Question(
+        val Pregunta2 = Pregunta(
             id = 1,
             question = "¿Por qué se hizo famoso este clip de Sakura Miko?",
             image = R.drawable.pregunta_dos,
@@ -179,12 +54,13 @@ object Constants {
             optionTwo = "El directo se corta de golpe porque se le va la luz",
             optionThree = "Miko, sin saber lo que significa, dice Nig*a de forma melódica ",
             optionFour = "Ella pensando que está silenciada se pone a hablar de cosas personales",
+            type = IMAGE,
             correctAnswer = 3
         )
 
-        questionImageList!!.add(question2)
+        PreguntaImageList!!.add(Pregunta2)
 
-        val question3 = Question(
+        val Pregunta3 = Pregunta(
             id = 1,
             question = "¿Cómo se conoce a esta agrupación de miembros de Hololive?",
             image = R.drawable.pregunta_tres,
@@ -192,12 +68,13 @@ object Constants {
             optionTwo = "Hololive SuperStars",
             optionThree = "HoloMyth",
             optionFour = "OKFAMS",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question3)
+        PreguntaImageList!!.add(Pregunta3)
 
 
-        val question4 = Question(
+        val Pregunta4 = Pregunta(
             id = 1,
             question = "A quién pertenece esta silueta?",
             image = R.drawable.pregunta_cuatro,
@@ -205,11 +82,12 @@ object Constants {
             optionTwo = "Lamy",
             optionThree = "Nene",
             optionFour = "Botan",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question4)
+        PreguntaImageList!!.add(Pregunta4)
 
-        val question5 = Question(
+        val Pregunta5 = Pregunta(
             id = 1,
             question = "En el vídeo de disculpa de Watame, ¿porqué se iba a disculpar?",
             image = R.drawable.pregunta_cinco,
@@ -217,11 +95,12 @@ object Constants {
             optionTwo = "Porque su internet era muy malo y tenía cortes de conexión",
             optionThree = "Porque hacía muy pocos directos",
             optionFour = "Porque sus directos eran muy cortos",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question5)
+        PreguntaImageList!!.add(Pregunta5)
 
-        val question6 = Question(
+        val Pregunta6 = Pregunta(
             id = 1,
             question = "¿Cómo se llamaba el noticiario que Kiryu Coco hacía?",
             image = R.drawable.pregunta_seis,
@@ -229,11 +108,12 @@ object Constants {
             optionTwo = "AsaCoco Live",
             optionThree = "News with Coco",
             optionFour = "Coco Daily",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question6)
+        PreguntaImageList!!.add(Pregunta6)
 
-        val question7 = Question(
+        val Pregunta7 = Pregunta(
             id = 1,
             question = "¿Cómo se llama el anime semanal que hace Hololive con sus miembros?",
             image = R.drawable.pregunta_ocho,
@@ -241,11 +121,12 @@ object Constants {
             optionTwo = "Holo no Animation",
             optionThree = "Holo no Graffiti",
             optionFour = "Hololive!",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question7)
+        PreguntaImageList!!.add(Pregunta7)
 
-        val question8 = Question(
+        val Pregunta8 = Pregunta(
             id = 1,
             question = "¿A qué se debe la abreviatura PPTenshi para referirse a Kanata?",
             image = R.drawable.pregunta_once,
@@ -253,11 +134,12 @@ object Constants {
             optionTwo = "Una abreviación de “ángel bondadoso” en japonés",
             optionThree = "En su debut usó una presentación de PowerPoint para presentarse",
             optionFour = "Es un mote que le pusieron sus compañeros",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question8)
+        PreguntaImageList!!.add(Pregunta8)
 
-        val question9 = Question(
+        val Pregunta9 = Pregunta(
             id = 1,
             question = "¿A que se debe el mote de “Gorilla Tenshi” para referirse a Kanata?",
             image = R.drawable.pregunta_doce,
@@ -265,11 +147,12 @@ object Constants {
             optionTwo = "A su corpulencia",
             optionThree = "A que en un directo dijo que tenía una fuerza de agarre de más de 50kg",
             optionFour = "A su altura",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question9)
+        PreguntaImageList!!.add(Pregunta9)
 
-        val question10 = Question(
+        val Pregunta10 = Pregunta(
             id = 1,
             question = "¿Cuál es una burla amistosa que se le hace recurrentemente a Towa?",
             image = R.drawable.pregunta_trece,
@@ -277,11 +160,12 @@ object Constants {
             optionTwo = "Suele morir con facilidad en los juegos",
             optionThree = "Cuando se pone a hablar se desconcentra y se olvida de lo que está haciendo",
             optionFour = "Que siempre está gastando bromas a los demás miembros",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question10)
+        PreguntaImageList!!.add(Pregunta10)
 
-        val question11 = Question(
+        val Pregunta11 = Pregunta(
             id = 1,
             question = "Pekora le enseñó sus videos a un familiar… ¿quién era?",
             image = R.drawable.pregunta_catorce,
@@ -289,11 +173,12 @@ object Constants {
             optionTwo = "Su hermana",
             optionThree = "Su madre",
             optionFour = "Su amiga",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question11)
+        PreguntaImageList!!.add(Pregunta11)
 
-        val question12 = Question(
+        val Pregunta12 = Pregunta(
             id = 1,
             question = "¿Qué edad afirma tener Marine cada vez que le preguntan?",
             image = R.drawable.pregunta_quince,
@@ -301,11 +186,12 @@ object Constants {
             optionTwo = "21",
             optionThree = "17",
             optionFour = "19",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question12)
+        PreguntaImageList!!.add(Pregunta12)
 
-        val question13 = Question(
+        val Pregunta13 = Pregunta(
             id = 1,
             question = "¿De que generación de Hololive es Kanata?",
             image = R.drawable.pregunta_diecisiete,
@@ -313,11 +199,12 @@ object Constants {
             optionTwo = "Segunda generación de Hololive",
             optionThree = "Tercera generación de Hololive",
             optionFour = "Cuarta generación de Hololive",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question13)
+        PreguntaImageList!!.add(Pregunta13)
 
-        val question14 = Question(
+        val Pregunta14 = Pregunta(
             id = 1,
             question = "La primera generación de Hololive English está formada por…",
             image = R.drawable.pregunta_dieciocho,
@@ -325,11 +212,12 @@ object Constants {
             optionTwo = "Kanata, Coco, Luna, Towa y Watame",
             optionThree = "Fubuki, Matsuri, Mel, Aki y Akai Haato",
             optionFour = "Choco, Subaru, Ayame, Shion y Aqua",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question14)
+        PreguntaImageList!!.add(Pregunta14)
 
-        val question15 = Question(
+        val Pregunta15 = Pregunta(
             id = 1,
             question = "El término que se usa para señalar que una Vtuber cesa sus actividades es…",
             image = R.drawable.pregunta_diecinueve,
@@ -337,11 +225,12 @@ object Constants {
             optionTwo = "Graduación",
             optionThree = "Desaparición",
             optionFour = "Finalización",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question15)
+        PreguntaImageList!!.add(Pregunta15)
 
-        val question16 = Question(
+        val Pregunta16 = Pregunta(
             id = 1,
             question = "¿Con qué miembro de Hololive se fundó la empresa?",
             image = R.drawable.pregunta_veinte,
@@ -349,11 +238,12 @@ object Constants {
             optionTwo = "Korone",
             optionThree = "Fubuki",
             optionFour = "Sora",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question16)
+        PreguntaImageList!!.add(Pregunta16)
 
-        val question17 = Question(
+        val Pregunta17 = Pregunta(
             id = 1,
             question = "En el primer directo de Sora, ¿cuántos espectadores hubo?",
             image = R.drawable.pregunta_veintiuno,
@@ -361,11 +251,12 @@ object Constants {
             optionTwo = "Más de 100",
             optionThree = "Más de 1000",
             optionFour = "Más de 10000",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question17)
+        PreguntaImageList!!.add(Pregunta17)
 
-        val question18 = Question(
+        val Pregunta18 = Pregunta(
             id = 1,
             question = "¿A que compañía pertenece Pikamee?",
             image = R.drawable.pregunta_veintidos,
@@ -373,11 +264,12 @@ object Constants {
             optionTwo = "Hololive",
             optionThree = "Vshojo",
             optionFour = "Nijisanji",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question18)
+        PreguntaImageList!!.add(Pregunta18)
 
-        val question19 = Question(
+        val Pregunta19 = Pregunta(
             id = 1,
             question = "¿Qué les requisa Korone a sus espectadores?",
             image = R.drawable.pregunta_veintitres,
@@ -385,11 +277,12 @@ object Constants {
             optionTwo = "La voluntad",
             optionThree = "Las manos",
             optionFour = "Los labios",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question19)
+        PreguntaImageList!!.add(Pregunta19)
 
-        val question20 = Question(
+        val Pregunta20 = Pregunta(
             id = 1,
             question = "El primer miebro de Hololive en hacer directos en inglés fue...",
             image = R.drawable.pregunta_veinticuatro,
@@ -397,11 +290,12 @@ object Constants {
             optionTwo = "Akai Haato",
             optionThree = "Inugane Korone",
             optionFour = "Shirogane Noel",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question20)
+        PreguntaImageList!!.add(Pregunta20)
 
-        val question21 = Question(
+        val Pregunta21 = Pregunta(
             id = 1,
             question = "¿Quién iba a ser un miembro de la primera generación de Hololive?",
             image = R.drawable.pregunta_veintiseis,
@@ -409,11 +303,12 @@ object Constants {
             optionTwo = "Hitomi Chris",
             optionThree = "Yuzuki Choco",
             optionFour = "Ookami Mio",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question21)
+        PreguntaImageList!!.add(Pregunta21)
 
-        val question22 = Question(
+        val Pregunta22 = Pregunta(
             id = 1,
             question = "¿Cuáles son todas las ramas de Hololive que existen actualmente?",
             image = R.drawable.pregunta_veintisiete,
@@ -421,11 +316,12 @@ object Constants {
             optionTwo = "Hololive China, Hololive Japan, Hololive Indonesia y Hololive English",
             optionThree = "Hololive Japan y Hololive English",
             optionFour = "Hololive Japan, Hololive Indonesia y Hololive English",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question22)
+        PreguntaImageList!!.add(Pregunta22)
 
-        val question23 = Question(
+        val Pregunta23 = Pregunta(
             id = 1,
             question = "La compañía con más miembros es…",
             image = R.drawable.pregunta_veintiocho,
@@ -433,11 +329,12 @@ object Constants {
             optionTwo = "Vshojo",
             optionThree = "VOMS",
             optionFour = "Hololive",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question23)
+        PreguntaImageList!!.add(Pregunta23)
 
-        val question24 = Question(
+        val Pregunta24 = Pregunta(
             id = 1,
             question = "La tercera generación de Hololive está compuesta por…",
             image = R.drawable.pregunta_veintinueve,
@@ -445,11 +342,12 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 2
         )
-        questionImageList!!.add(question24)
+        PreguntaImageList!!.add(Pregunta24)
 
-        val question25 = Question(
+        val Pregunta25 = Pregunta(
             id = 1,
             question = "La segunda generación de Hololive está compuesta por…",
             image = R.drawable.pregunta_treinta,
@@ -457,11 +355,12 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question25)
+        PreguntaImageList!!.add(Pregunta25)
 
-        val question26 = Question(
+        val Pregunta26 = Pregunta(
             id = 1,
             question = "La primera generación de Hololive está compuesta por…",
             image = R.drawable.pregunta_treintayuno,
@@ -469,11 +368,12 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question26)
+        PreguntaImageList!!.add(Pregunta26)
 
-        val question27 = Question(
+        val Pregunta27 = Pregunta(
             id = 1,
             question = "La cuarta generación de Hololive está compuesta por…",
             image = R.drawable.pregunta_treintaydos,
@@ -481,11 +381,12 @@ object Constants {
             optionTwo = "Rushia, Marine, Pekora, Noel y Flare",
             optionThree = "Watame, Luna, Coco, Towa y Kanata",
             optionFour = "Fubuki, Matsuri, Aki, Mel y Akai Haato",
+            type = IMAGE,
             correctAnswer = 3
         )
-        questionImageList!!.add(question27)
+        PreguntaImageList!!.add(Pregunta27)
 
-        val question28 = Question(
+        val Pregunta28 = Pregunta(
             id = 1,
             question = "¿En qué había trabajado Watame antes de pertenecer a Hololive?",
             image = R.drawable.pregunta_treintaytres,
@@ -493,11 +394,12 @@ object Constants {
             optionTwo = "Era camarera",
             optionThree = "Era escritora",
             optionFour = "Era cocinera",
+            type = IMAGE,
             correctAnswer = 1
         )
-        questionImageList!!.add(question28)
+        PreguntaImageList!!.add(Pregunta28)
 
-        val question29 = Question(
+        val Pregunta29 = Pregunta(
             id = 1,
             question = "¿Qué miembro de Hololive protagoniza una serie de cortos para niños?",
             image = R.drawable.pregunta_treintaycuatro,
@@ -505,18 +407,19 @@ object Constants {
             optionTwo = "Lamy",
             optionThree = "Coco",
             optionFour = "Watame",
+            type = IMAGE,
             correctAnswer = 4
         )
-        questionImageList!!.add(question29)
+        PreguntaImageList!!.add(Pregunta29)
 
-        return questionImageList as ArrayList<Question>
+        return PreguntaImageList as ArrayList<Pregunta>
     }
 
-    fun getGifQuestions(): ArrayList<Question> {
-        questionGifList = ArrayList()
+    fun getGifPreguntas(): ArrayList<Pregunta> {
+        PreguntaGifList = ArrayList()
 
 
-        val question1 = Question(
+        val Pregunta1 = Pregunta(
             id = 1,
             question = "¿Con qué miembro de Hololive se asocia esta mascota?",
             image = R.drawable.pregunta_siete_gif,
@@ -524,11 +427,12 @@ object Constants {
             optionTwo = "Mio",
             optionThree = "Luna",
             optionFour = "Subaru",
+            type = GIF,
             correctAnswer = 4
         )
-        questionGifList.add(question1)
+        PreguntaGifList.add(Pregunta1)
 
-        val question2 = Question(
+        val Pregunta2 = Pregunta(
             id = 1,
             question = "¿Qué representa Ceres Fauna?",
             image = R.drawable.pregunta_diez_gif,
@@ -536,11 +440,12 @@ object Constants {
             optionTwo = "Representa a la madre naturaleza",
             optionThree = "Es una semi-diosa",
             optionFour = "Es una gacela",
+            type = GIF,
             correctAnswer = 2
         )
-        questionGifList.add(question2)
+        PreguntaGifList.add(Pregunta2)
 
-        val question3 = Question(
+        val Pregunta3 = Pregunta(
             id = 1,
             question = "¿A qué animal representa Watame?",
             image = R.drawable.pregunta_nueve_gif,
@@ -548,11 +453,12 @@ object Constants {
             optionTwo = "Cabra",
             optionThree = "Carnero",
             optionFour = "Toro",
+            type = GIF,
             correctAnswer = 1
         )
-        questionGifList.add(question3)
+        PreguntaGifList.add(Pregunta3)
 
-        val question4 = Question(
+        val Pregunta4 = Pregunta(
             id = 1,
             question = "¿De qué generación es Pekora?",
             image = R.drawable.pregunta_dieciseis_gif,
@@ -560,11 +466,12 @@ object Constants {
             optionTwo = "Segunda generación de Hololive",
             optionThree = "Tercera generación de Hololive",
             optionFour = "Cuarta generación de Hololive",
+            type = GIF,
             correctAnswer = 3
         )
-        questionGifList.add(question4)
+        PreguntaGifList.add(Pregunta4)
 
-        val question5 = Question(
+        val Pregunta5 = Pregunta(
             id = 1,
             question = "¿Quién es la “mama” de Subaru?",
             image = R.drawable.pregunta_veinticinco_gif,
@@ -572,12 +479,13 @@ object Constants {
             optionTwo = "Inuyama Tamaki",
             optionThree = "Nachoneko",
             optionFour = "Nabi",
+            type = GIF,
             correctAnswer = 1
         )
 
-        questionGifList.add(question5)
+        PreguntaGifList.add(Pregunta5)
 
-        val question6 = Question(
+        val Pregunta6 = Pregunta(
             id = 1,
             question = "¿Cómo llama Ina a sus seguidores?",
             image = R.drawable.pregunta_treintaycinco_gif,
@@ -585,104 +493,218 @@ object Constants {
             optionTwo = "Takodachis",
             optionThree = "Octochans",
             optionFour = "Takochis",
+            type = GIF,
             correctAnswer = 2
         )
 
-        questionGifList.add(question6)
+        PreguntaGifList.add(Pregunta6)
 
-        return questionGifList
+        return PreguntaGifList
     }
 
-    fun getFourImageQuestions(): ArrayList<Question> {
-        questionFourImageList = ArrayList()
+    fun getFourImagePreguntas(): ArrayList<Pregunta> {
+        PreguntaFourImageList = ArrayList()
 
-        val question1 = Question(
+        val Pregunta1 = Pregunta(
             id = 1,
             question = "Selecciona a Nakiri Ayame",
             image = R.drawable.pregunta_opciones_1_1,
             image2 = R.drawable.pregunta_opciones_1_2,
             image3 = R.drawable.pregunta_opciones_1_3,
             image4 = R.drawable.pregunta_opciones_1_4,
+            type = FOURIMAGE,
             correctAnswer = 1
         )
-        questionFourImageList.add(question1)
+        PreguntaFourImageList.add(Pregunta1)
 
-        val question2 = Question(
+        val Pregunta2 = Pregunta(
             id = 1,
             question = "Selecciona la imagen que no se corresponda con un miembro de HoloLive",
             image = R.drawable.pregunta_opciones_2_1,
             image2 = R.drawable.pregunta_opciones_2_2,
             image3 = R.drawable.pregunta_opciones_2_3,
             image4 = R.drawable.pregunta_opciones_2_4,
+            type = FOURIMAGE,
             correctAnswer = 3
         )
-        questionFourImageList.add(question2)
-        val question3 = Question(
+        PreguntaFourImageList.add(Pregunta2)
+        val Pregunta3 = Pregunta(
             id = 1,
             question = "Selecciona la imagen que se corresponda con un miembro de Hololive Indonesia",
             image = R.drawable.pregunta_opciones_3_1,
             image2 = R.drawable.pregunta_opciones_3_2,
             image3 = R.drawable.pregunta_opciones_3_3,
             image4 = R.drawable.pregunta_opciones_3_4,
+            type = FOURIMAGE,
             correctAnswer = 2
         )
-        questionFourImageList.add(question3)
-        val question4 = Question(
+        PreguntaFourImageList.add(Pregunta3)
+        val Pregunta4 = Pregunta(
             id = 1,
             question = "Selecciona a la Vtuber independiente",
             image = R.drawable.pregunta_opciones_4_1,
             image2 = R.drawable.pregunta_opciones_4_2,
             image3 = R.drawable.pregunta_opciones_4_3,
             image4 = R.drawable.pregunta_opciones_4_4,
+            type = FOURIMAGE,
             correctAnswer = 3
         )
-        questionFourImageList.add(question4)
-        val question5 = Question(
+        PreguntaFourImageList.add(Pregunta4)
+        val Pregunta5 = Pregunta(
             id = 1,
             question = "Selecciona la imagen que se corresponda con un miembro de Hololive Gamers:",
             image = R.drawable.pregunta_opciones_5_1,
             image2 = R.drawable.pregunta_opciones_5_2,
             image3 = R.drawable.pregunta_opciones_5_3,
             image4 = R.drawable.pregunta_opciones_5_4,
+            type = FOURIMAGE,
             correctAnswer = 1
         )
-        questionFourImageList.add(question5)
+        PreguntaFourImageList.add(Pregunta5)
 
 
-        return questionFourImageList
-
-    }
-
-
-    fun getPreguntasImage(app: AppCompatActivity) {
-        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
-
-        s.readAllDataTypeGif.observe(app, Observer { pregunta ->
-            questionGifListAux = ArrayList(pregunta)
-
-        })
-
-        s.readAllDataTypeImage.observe(app, Observer { pregunta ->
-            questionImageListAux = ArrayList(pregunta)
-
-        })
-        s.readAllDataTypeFourImages.observe(app, Observer { pregunta ->
-            questionFourImageListAux = ArrayList(pregunta)
-
-        })
-        s.readAllDataTypeVideo.observe(app, Observer { pregunta ->
-            questionVideoListAux = ArrayList(pregunta)
-
-        })
+        return PreguntaFourImageList
 
     }
 
-    fun read() {
-        Log.i("asdwdqwe", questionFourImageListAux.toString())
-        Log.i("asdwdqwe", questionImageListAux.toString())
-        Log.i("asdwdqwe", questionGifListAux.toString())
-        Log.i("asdwdqwe", questionVideoListAux.toString())
+
+    fun getVideoQuestion(): ArrayList<Pregunta> {
+
+        PreguntaVideoList =  ArrayList()
+        val question1 = Pregunta(
+            id = 1,
+            question = "¿Qué dos Vtubers aparecen en esta animación?",
+            image = R.raw.pregunta_video_1,
+            optionOne = "Marine y Pekora",
+            optionTwo = "Marine y Polka",
+            optionThree = "Polka y Lamy",
+            optionFour = "Polka y Rushia",
+            type=VIDEO,
+            correctAnswer = 2
+        )
+        PreguntaVideoList.add(question1)
+
+        val question2 = Pregunta(
+            id = 1,
+            question = "¿De qué vtuber es este saludo?",
+            image = R.raw.pregunta_video_2,
+            optionOne = "Uruha Rushia",
+            optionTwo = "Houshou Marine",
+            optionThree = "Kiryu Coco",
+            optionFour = "Usada Pekora",
+            type=VIDEO,
+            correctAnswer = 4
+        )
+        PreguntaVideoList.add(question2)
+
+        val question3 = Pregunta(
+            id = 1,
+            question = "¿Quién canta este cover de la canción 'Goodbye Declaration'?",
+            image = R.raw.pregunta_video_3,
+            optionOne = "Uruha Rushia",
+            optionTwo = "Gawr Gura",
+            optionThree = "Calliope Mori",
+            optionFour = "Tsunomaki Watame",
+            type=VIDEO,
+            correctAnswer = 1
+        )
+        PreguntaVideoList.add(question3)
+
+        val question4 = Pregunta(
+            id = 1,
+            question = "¿Quién es la protagonista de este clip?",
+            image = R.raw.pregunta_video_4,
+            optionOne = "Nanashi Mumei",
+            optionTwo = "Nakiri Ayame",
+            optionThree = "Takanashi Kiara",
+            optionFour = "Fauna Ceres",
+            type=VIDEO,
+            correctAnswer = 2
+        )
+        PreguntaVideoList.add(question4)
+
+        val question5 = Pregunta(
+            id = 1,
+            question = "¿Quién es la protagonista de este clip?",
+            image = R.raw.pregunta_video_5,
+            optionOne = "Shirogane Noel",
+            optionTwo = "Shiranui Flare",
+            optionThree = "Sakura Miko",
+            optionFour = "Yozora Mel",
+            type=VIDEO,
+            correctAnswer = 3
+        )
+        PreguntaVideoList.add(question5)
+
+        val question6 = Pregunta(
+            id = 1,
+            question = "En este meme, ¿cuál es la canción que se usa de base?",
+            image = R.raw.pregunta_video_6,
+            optionOne = "Before I knew you",
+            optionTwo = "Somebody that I used to know",
+            optionThree = "I know You too well",
+            optionFour = "Someone I knew",
+            type=VIDEO,
+            correctAnswer = 2
+        )
+        PreguntaVideoList.add(question6)
+
+        val question7 = Pregunta(
+            id = 1,
+            question = "En esta animación, ¿a qué juego estaban jugando Korone y Calliope?",
+            image = R.raw.pregunta_video_7,
+            optionOne = "Keep Talking and Nobody Explodes",
+            optionTwo = "Minecraft",
+            optionThree = "1-2-Switch",
+            optionFour = "Mario Party",
+            type=VIDEO,
+            correctAnswer = 1
+        )
+        PreguntaVideoList.add(question7)
+
+        val question8 = Pregunta(
+            id = 1,
+            question = "En esta animación, ¿a que famosa película de los 90 se hace referencia?",
+            image = R.raw.pregunta_video_8,
+            optionOne = "Star Wars: Episodio V - El Imperio contraataca",
+            optionTwo = "Indiana Jones y la última cruzada",
+            optionThree = "Terminator 2",
+            optionFour = "Regreso al futuro 3",
+            type=VIDEO,
+            correctAnswer = 3
+        )
+        PreguntaVideoList.add(question8)
+
+        val question9 = Pregunta(
+            id = 1,
+            question = "En esta animación, ¿quién es la protagonista?",
+            image = R.raw.pregunta_video_9,
+            optionOne = "Yuzuki Choco",
+            optionTwo = "Oozora Subaru",
+            optionThree = "Akai Haato",
+            optionFour = "Omaru Polka",
+            type=VIDEO,
+            correctAnswer = 2
+        )
+        PreguntaVideoList.add(question9)
+
+        val question10 = Pregunta(
+            id = 1,
+            question = "¿Quién canta esta canción original?",
+            image = R.raw.pregunta_video_10,
+            optionOne = "Shirakami Fubuki",
+            optionTwo = "Tokoyami Towa",
+            optionThree = "Shishiro Botan",
+            optionFour = "Gawr Gura",
+            type=VIDEO,
+            correctAnswer = 4
+        )
+        PreguntaVideoList.add(question10)
+
+        return PreguntaVideoList
     }
+
+
 
 
     fun getFragments(): ArrayList<QuizBaseTypeFragment> {
@@ -698,10 +720,126 @@ object Constants {
         val fragment3 = QuizFourImageType()
         listFragment.add(fragment3)
 
-        val fragment4 = QuizVideoType()
-        listFragment.add(fragment4)
-
         return listFragment
     }
+
+
+    fun createALLPregunta(app: AppCompatActivity) {
+//
+//        var lista1 = getImagePreguntas()
+//        var lista2 = getFourImagePreguntas()
+//        var lista3 = getGifPreguntas()
+
+//        val Pregunta5 = Pregunta(
+//            id = 0,
+//            Pregunta = "Selecciossna la imagsssen que se cordasd12responda con un miembro de Hololive Gamers:",
+//            image = R.drawable.pregunta_opciones_3_1,
+//            image2 = R.drawable.pregunta_opciones_5_2,
+//            image3 = R.drawable.pregunta_opciones_2_3,
+//            image4 = R.drawable.pregunta_opciones_5_4,
+//            correctAnswer = 3
+//        )
+////
+//        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+//        s.addUser(Pregunta5)
+//        Toast.makeText(app,"Compelted",Toast.LENGTH_LONG).show()
+//        Log.d("","ASDasdasdqwdSDadwdqs")
+
+
+    }
+
+    
+    fun createBASEDATA(){
+        
+        
+        var lista1 = getImagePreguntas()
+        var lista2 = getFourImagePreguntas()
+        var lista3 = getGifPreguntas()
+
+        var i =0
+      lista1.forEach {
+          it.id=i
+          i++
+          Log.i("pregunta1: ",it.toString())
+          mViewModel.addPregunta(it)
+      }
+        lista2.forEach {
+            it.id=i
+            i++
+            Log.i("pregunta2: ",it.toString())
+            mViewModel.addPregunta(it)
+        }
+        lista3.forEach {
+            it.id=i
+            i++
+            Log.i("pregunta3: ",it.toString())
+            mViewModel.addPregunta(it)
+        }
+        
+        
+    }
+
+
+    fun createBASEDATAAudio(){
+
+
+        var lista1 = getImagePreguntas()
+        var lista2 = getFourImagePreguntas()
+        var lista3 = getGifPreguntas()
+        var lista4 = getVideoQuestion()
+        var i =0
+        lista1.forEach {
+            it.id=i
+            i++
+
+        }
+        lista2.forEach {
+            it.id=i
+            i++
+
+        }
+        lista3.forEach {
+            it.id=i
+            i++
+
+        }
+
+        lista4.forEach {
+            it.id=i
+            i++
+            Log.i("pregunta3: ",it.toString())
+            mViewModel.addPregunta(it)
+        }
+
+
+    }
+
+
+
+    
+
+    fun axus(app: AppCompatActivity) {
+
+
+
+        val Pregunta5 = Pregunta(
+            id = 0,
+            question = "Selecciossna la imagsssen que se cordasd12responda con un miembro de Hololive Gamers:",
+            image = R.drawable.pregunta_opciones_3_1,
+            image2 = R.drawable.pregunta_opciones_5_2,
+            image3 = R.drawable.pregunta_opciones_2_3,
+            image4 = R.drawable.pregunta_opciones_5_4,
+            type = "gasd",
+            correctAnswer = 3
+        )
+
+
+
+        mViewModel.addPregunta(Pregunta5)
+
+        mViewModel.readAllData.observe(app, Observer { pregunta -> Log.i("LEEE", pregunta.toString()) })
+
+    }
+
 
 }

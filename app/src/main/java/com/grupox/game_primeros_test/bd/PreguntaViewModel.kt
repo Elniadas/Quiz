@@ -14,6 +14,7 @@ class PreguntaViewModel(application: Application) : AndroidViewModel(application
     val readAllDataTypeImage: LiveData<List<Pregunta>>
     val readAllDataTypeGif: LiveData<List<Pregunta>>
     val readAllDataTypeFourImages: LiveData<List<Pregunta>>
+    val readAllDataTypeVideo: LiveData<List<Pregunta>>
     private val repository: PreguntasRepository
 
     init {
@@ -23,6 +24,7 @@ class PreguntaViewModel(application: Application) : AndroidViewModel(application
         readAllDataTypeImage = repository.readAllDataTypeImage
         readAllDataTypeGif = repository.readAllDataTypeGif
         readAllDataTypeFourImages = repository.readAllDataTypeFourImages
+        readAllDataTypeVideo = repository.readAllDataTypeVideo
     }
 
     fun addPregunta(pregunta: Pregunta) {
