@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.MediaController
 import androidx.core.content.ContextCompat
+import com.grupox.game_primeros_test.bd.Pregunta
 import kotlinx.android.synthetic.main.fragment_quiz_video_type.*
 import kotlin.random.Random
 
 
 class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
     private var mSelectedOptionPosition: Int = 0
-    private var mQuestion: Question? = null
+    private var mQuestion: Pregunta? = null
     private var _isCompleted = false
     private var mediaController: MediaController? = null
     override fun isCompleted(): Boolean {
@@ -98,7 +99,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         _isCompleted = false
         var questPosition = Random.nextInt(0, Constants.questionVideoList.size)
         setDefaultOptionsView()
-        val question: Question = Constants.questionVideoList[questPosition]
+        val question: Pregunta = Constants.questionVideoList[questPosition]
         Constants.questionVideoList.removeAt(questPosition)
 
         mQuestion = question

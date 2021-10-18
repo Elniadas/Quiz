@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.grupox.game_primeros_test.bd.Pregunta
 
 
 import kotlinx.android.synthetic.main.fragment_one_gif.*
@@ -23,7 +24,7 @@ class QuizGifType : QuizBaseTypeFragment(), View.OnClickListener {
 
     //private var Constants.questionGifList: ArrayList<Question>? = Constants.getGifQuestions()
     private var mSelectedOptionPosition: Int = 0
-    private var mQuestion: Question? = null
+    private var mQuestion: Pregunta? = null
     private var _isCompleted = false
 
 
@@ -102,7 +103,7 @@ class QuizGifType : QuizBaseTypeFragment(), View.OnClickListener {
         Log.i("quedan restantes", "Quedan : " + Constants.questionGifList!!.size)
         var questPosition = Random.nextInt(Constants.questionGifList!!.size)
         setDefaultOptionsView()
-        val question: Question = Constants.questionGifList!![questPosition]
+        val question: Pregunta = Constants.questionGifList!![questPosition]
         Constants.questionGifList!!.removeAt(questPosition)
 
         mQuestion = question

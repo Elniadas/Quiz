@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.grupox.game_primeros_test.bd.Pregunta
 import kotlinx.android.synthetic.main.fragment_one_gif.*
 import kotlinx.android.synthetic.main.fragment_one_gif.bt_fragment_answer1
 import kotlinx.android.synthetic.main.fragment_one_gif.bt_fragment_answer2
@@ -23,7 +24,7 @@ import kotlin.random.Random
 class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
 
     private var mSelectedOptionPosition: Int = 0
-    private var mQuestion: Question? = null
+    private var mQuestion: Pregunta? = null
     private var _isCompleted = false
 
     override fun isCompleted(): Boolean {
@@ -96,7 +97,7 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
         _isCompleted = false
         var questPosition = Random.nextInt(Constants.questionFourImageList.size)
         setDefaultOptionsView()
-        val question: Question = Constants.questionFourImageList[questPosition]
+        val question: Pregunta = Constants.questionFourImageList[questPosition]
         Constants.questionFourImageList.removeAt(questPosition)
         mQuestion = question
         var a = activity as QuizFragments

@@ -10,10 +10,10 @@ import kotlin.math.log
 
 object Constants {
 
-    var questionImageList: ArrayList<Question>? = null
-    var questionGifList: ArrayList<Question> = ArrayList()
-    var questionFourImageList: ArrayList<Question> = ArrayList()
-    var questionVideoList: ArrayList<Question> = ArrayList();
+    var questionImageList: ArrayList<Pregunta>? = null
+    var questionGifList: ArrayList<Pregunta> = ArrayList()
+    var questionFourImageList: ArrayList<Pregunta> = ArrayList()
+    var questionVideoList: ArrayList<Pregunta> = ArrayList();
 
     lateinit var questionGifListAux: ArrayList<Pregunta>
     lateinit var questionImageListAux: ArrayList<Pregunta>
@@ -29,6 +29,24 @@ object Constants {
             return field
         }
 
+    fun getVideoQuestion(){
+
+        questionVideoList = ArrayList(questionVideoListAux)
+    }
+
+    fun getFourImageQuestions() {
+        questionGifList= ArrayList(questionGifListAux)
+    }
+
+    fun getGifQuestions() {
+        questionGifList = ArrayList(questionGifListAux)
+    }
+
+    fun getImageQuestions() {
+        questionImageList= ArrayList(questionImageListAux)
+    }
+
+    /*
     fun getVideoQuestion(): ArrayList<Question> {
         questionVideoList = ArrayList()
 
@@ -653,6 +671,7 @@ object Constants {
 
     }
 
+*/
 
     fun getPreguntasImage(app: AppCompatActivity) {
         var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
@@ -703,5 +722,7 @@ object Constants {
 
         return listFragment
     }
+
+
 
 }

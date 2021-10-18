@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.ContextCompat
+import com.grupox.game_primeros_test.bd.Pregunta
 import kotlinx.android.synthetic.main.fragment_one_image.*
 
 
@@ -19,7 +20,7 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
 
     //private var mQuestionsLists: ArrayList<Question>? = Constants.getImageQuestions()
     private var mSelectedOptionPosition: Int = 0
-    private var mQuestion: Question? = null
+    private var mQuestion: Pregunta? = null
     private var _isCompleted = false
 
     /*
@@ -112,7 +113,7 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
         var questPosition = Random.nextInt(0, Constants.questionImageList!!.size)
         setDefaultOptionsView()
         //val question: Question = mQuestionsLists!![questPosition]
-        val question: Question = Constants.questionImageList!![questPosition]
+        val question: Pregunta = Constants.questionImageList!![questPosition]
         //mQuestionsLists!!.removeAt(questPosition)
         Constants.questionImageList!!.removeAt(questPosition)
 
