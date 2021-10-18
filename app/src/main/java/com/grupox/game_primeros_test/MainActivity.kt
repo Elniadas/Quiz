@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -20,6 +21,8 @@ class MainActivity : Audio() {
 //            systemUiVisibility =
 //                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
 //        }
+
+
 
         setContentView(R.layout.activity_main)
         //randomBg()

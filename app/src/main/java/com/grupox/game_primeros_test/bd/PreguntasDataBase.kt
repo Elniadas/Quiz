@@ -12,44 +12,26 @@ import androidx.room.RoomDatabase
     exportSchema = false
 )
 
-abstract class PreguntasDataBase: RoomDatabase() {
+abstract class PreguntasDataBase : RoomDatabase() {
 
-        abstract fun getPreguntaDao():PreguntaDao
+    abstract fun getPreguntaDao(): PreguntaDao
 
-        companion object{
-            @Volatile private var INSTANCE  : PreguntasDataBase? = null //hace que sea accesible por todos en cualquier momento
+    companion object {
+        @Volatile
+        private var INSTANCE: PreguntasDataBase? = null
 
-            fun getDatabase(context: Context):PreguntasDataBase{
-                val tempInstance = INSTANCE
-                if(tempInstance!=null){
-                    return tempInstance
-                }
-             synchronized(this){
-                 val instance = Room.databaseBuilder(
-                     context.applicationContext,
-                     PreguntasDataBase::class.java,
-                     "preguntas_database"
-                 ).build()
-                 INSTANCE=instance
-                 return instance
-             }
+        fun getDatabase(context: Context): PreguntasDataBase =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE
+                    ?: buildDatabase(context).also { INSTANCE = it }
             }
 
-
-//            private val LOCK = Any()
-//            operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-//                instance ?: buildDatabase(context).also {
-//                    instance=it
-//                }
-//            }
-//
-//            private fun buildDatabase(context: Context) = Room.databaseBuilder(
-//                context.applicationContext,
-//                PreguntasDataBase::class.java,
-//                "preguntasdatabase"
-//            ).build()
-
-        }
-
-
+        private fun buildDatabase(context: Context) =
+            Room.databaseBuilder(
+                context.applicationContext,
+                PreguntasDataBase::class.java, "preguntas_database"
+            ).createFromAsset("database/preguntas_database.db").build()
+    }
 }
+
+
