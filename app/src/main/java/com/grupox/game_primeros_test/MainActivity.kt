@@ -33,7 +33,7 @@ class MainActivity : Audio() {
         PlayerSettings.appStart = false
 
         bt_play.setOnClickListener {
-            val intent = Intent(this, QuizFragments::class.java)
+            val intent = Intent(this, Set_Name::class.java)
             startActivity(intent)
         }
 
