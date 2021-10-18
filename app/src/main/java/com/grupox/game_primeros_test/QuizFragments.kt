@@ -14,7 +14,7 @@ class QuizFragments : Audio() {
 
     var _fragments: ArrayList<QuizBaseTypeFragment>? = null
     var _currentFragment: Int = -1
-    private val nPreguntas = PlayerSettings.nQuestions
+    private val nPreguntas = LoadData.prefs.nPreguntas
     var _preguntasCompletadas = 0
 
 
@@ -90,7 +90,7 @@ class QuizFragments : Audio() {
     private fun updateProgressBar() {
         _preguntasCompletadas++
         tv_texto_progress_bar.text =
-            _preguntasCompletadas.toString() + " / " + PlayerSettings.nQuestions.toString()
+            _preguntasCompletadas.toString() + " / " + LoadData.prefs.nPreguntas.toString()
         pb_quiz.progress = _preguntasCompletadas
     }
 

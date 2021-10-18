@@ -15,7 +15,7 @@ class End_Activity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_end)
         tv_rightQuestions.text =
-            "Preguntas acertadas en total : ${PlayerSettings.rightQuestions}/${PlayerSettings.nQuestions}"
+            "Preguntas acertadas en total : ${PlayerSettings.rightQuestions}/${LoadData.prefs.nPreguntas}"
 
         bt_playAgain.setOnClickListener {
             val intent = Intent(this, QuizFragments::class.java)

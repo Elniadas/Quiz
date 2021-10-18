@@ -8,7 +8,7 @@ import android.util.Log
 object PlayerSettings {
     var player: MediaPlayer? = null
     var played: Boolean = false
-    var nQuestions: Int = 5
+
     var rightQuestions: Int = 0
     var appStart = true
     var questAnswered = false

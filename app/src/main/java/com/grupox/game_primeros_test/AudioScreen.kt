@@ -27,12 +27,11 @@ class AudioScreen : Audio() {
         bt_sound.setOnClickListener {
             play_stop()
         }
-        rb_5preguntas.setOnClickListener { PlayerSettings.nQuestions = 5 }
-        rb_10preguntas.setOnClickListener { PlayerSettings.nQuestions = 10 }
-        rb_15preguntas.setOnClickListener { PlayerSettings.nQuestions = 15 }
+        rb_5preguntas.setOnClickListener  { LoadData.prefs.nPreguntas = 5 }
+        rb_10preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 10 }
+        rb_15preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 15 }
         setupCustomSpinner()
         Constants.read()
-
 
 
     }
@@ -85,7 +84,7 @@ class AudioScreen : Audio() {
             bt_sound.playAnimation()
 
         }
-        when (PlayerSettings.nQuestions) {
+        when (LoadData.prefs.nPreguntas) {
             5 -> {
                 rb_5preguntas.isChecked = true
             }
