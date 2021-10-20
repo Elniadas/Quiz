@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -21,6 +23,9 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
     private var mQuestion: Pregunta? = null
     private var _isCompleted = false
     private var mediaController: MediaController? = null
+
+    private val wait_time: Long=1000
+
     override fun isCompleted(): Boolean {
         return _isCompleted
     }
@@ -201,6 +206,13 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         _isCompleted = true
         checkSolution()
         removeListeners()
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(Runnable {
+            // UI code goes here
+            var a = activity as QuizFragments
+            a.avanzar()
+        },wait_time)
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.grupox.game_primeros_test
 
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,13 +20,21 @@ import kotlinx.android.synthetic.main.fragment_one_gif.bt_fragment_answer3
 import kotlinx.android.synthetic.main.fragment_one_gif.bt_fragment_answer4
 import kotlinx.android.synthetic.main.fragment_one_image.*
 import kotlinx.android.synthetic.main.fragment_quiz_four_image_type.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.timerTask
 import kotlin.random.Random
+import android.os.Looper
+
+
+
 
 class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
 
     private var mSelectedOptionPosition: Int = 0
     private var mQuestion: Pregunta? = null
     private var _isCompleted = false
+    private val wait_time :Long = 1000
 
     override fun isCompleted(): Boolean {
         return _isCompleted
@@ -185,5 +194,15 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
         _isCompleted = true
         checkSolution()
         removeListeners()
+
+
+
+
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(Runnable {
+            // UI code goes here
+            var a = activity as QuizFragments
+            a.avanzar()
+        },wait_time)
     }
 }

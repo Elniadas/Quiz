@@ -39,47 +39,8 @@ class QuizFragments : Audio() {
 
         bt_confirmar_quiz.setOnClickListener {
             Log.i("PREGUNTAS: ", "Preguntas completadas : " + _preguntasCompletadas)
-//            if (_preguntasCompletadas < nPreguntas) {
-//                if (PlayerSettings.questAnswered) {
-//                    bt_confirmar_quiz.text = "Siguiente"
-//                    setFragment()
-//
-//                } else {
-//                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
-//                }
-//            } else if(_fragments!![_currentFragment].isCompleted()){
-//                val intent = Intent(this, End_Activity::class.java)
-//                startActivity(intent)
-//                finish()
-//            }
 
-//            PlayerSettings.buttonSound(R.raw.clic_audio,this)
-            if (_preguntasCompletadas == nPreguntas) {
-
-                if (_fragments!![_currentFragment].isCompleted()) {
-                    val intent = Intent(this, End_Activity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    if (!PlayerSettings.questAnswered) {
-                        bt_confirmar_quiz.text = "Responde a la pregunta primero"
-
-                    }
-                }
-
-            } else {
-                if (PlayerSettings.questAnswered) {
-                    bt_confirmar_quiz.text = "Siguiente"
-                    if (_preguntasCompletadas == nPreguntas - 1) {
-                        bt_confirmar_quiz.text = "Finalizar"
-                    }
-                    setFragment()
-
-                } else {
-                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
-                }
-            }
-
+            avanzar()
 
         }
 
@@ -141,6 +102,34 @@ class QuizFragments : Audio() {
          */
     }
 
+
+    fun avanzar(){
+        if (_preguntasCompletadas == nPreguntas) {
+
+            if (_fragments!![_currentFragment].isCompleted()) {
+                val intent = Intent(this, End_Activity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                if (!PlayerSettings.questAnswered) {
+                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
+
+                }
+            }
+
+        } else {
+            if (PlayerSettings.questAnswered) {
+                bt_confirmar_quiz.text = "Siguiente"
+                if (_preguntasCompletadas == nPreguntas - 1) {
+                    bt_confirmar_quiz.text = "Finalizar"
+                }
+                setFragment()
+
+            } else {
+                bt_confirmar_quiz.text = "Responde a la pregunta primero"
+            }
+        }
+    }
 
     fun cambiarTexto(texto: String) {
         tv_texto_fragmento.text = texto
