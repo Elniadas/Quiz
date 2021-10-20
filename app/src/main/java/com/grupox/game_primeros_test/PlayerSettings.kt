@@ -7,10 +7,13 @@ import android.util.Log
 
 object PlayerSettings {
     var player: MediaPlayer? = null
-    var played: Boolean = false
+    var played
+        get() = LoadData.prefs.audio
+        set(value) {
+            LoadData.prefs.audio = value
+        }
 
     var rightQuestions: Int = 0
-    var appStart = true
     var questAnswered = false
     var buttonSoundPlayer: MediaPlayer? = null
 
@@ -38,7 +41,7 @@ object PlayerSettings {
 
 
     fun buttonSound(sound: Int, context: Context) {
-        if(played){
+        if (played) {
             buttonSoundPlayer = MediaPlayer.create(context, sound)
             buttonSoundPlayer!!.start()
         }

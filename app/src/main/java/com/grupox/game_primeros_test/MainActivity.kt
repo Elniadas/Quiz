@@ -29,10 +29,10 @@ class MainActivity : Audio() {
         setContentView(R.layout.activity_main)
         //randomBg()
         setBgUser()
-        if (PlayerSettings.appStart)
+        if (PlayerSettings.played)
             PlayerSettings.startMusic(applicationContext)
 
-        PlayerSettings.appStart = false
+
 
         val builder = AlertDialog.Builder(this)
 
