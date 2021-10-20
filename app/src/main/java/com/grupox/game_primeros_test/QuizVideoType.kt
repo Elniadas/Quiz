@@ -1,9 +1,11 @@
 package com.grupox.game_primeros_test
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -78,6 +80,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
             mediaController = MediaController(activity)
         //Anchor view no está funcionando como debería
         mediaController!!.setAnchorView(video_question)
+
     }
 
     override fun onCreateView(
@@ -88,11 +91,36 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_quiz_video_type, container, false)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         PlayerSettings.questAnswered = false;
         setQuestion()
+        video_question.setOnTouchListener { v, event ->
+            if (!video_question.isPlaying) {
 
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        video_question.start()
+                        mediaController!!.hide()
+                        mediaController!!.show(3)
+                    }
+                }
+
+            } else {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        video_question.pause()
+                        mediaController!!.hide()
+                        mediaController!!.show(3)
+                    }
+
+                }
+
+            }
+
+            v?.onTouchEvent(event) ?: true
+        }
     }
 
     private fun setQuestion() {
@@ -174,4 +202,5 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         checkSolution()
         removeListeners()
     }
+
 }

@@ -8,13 +8,19 @@
     tools:context=".QuizFragments">
 
 
-    <VideoView
-        android:id="@+id/video_question"
-        android:layout_width="300dp"
-        android:layout_height="280dp"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginBottom="110dp"
-        android:scaleType="fitCenter" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="110dp">
+
+        <VideoView
+            android:id="@+id/video_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_fragment_video_answer1"
@@ -49,3 +55,4 @@
         android:text="Button" />
 
 </FrameLayout>
+
