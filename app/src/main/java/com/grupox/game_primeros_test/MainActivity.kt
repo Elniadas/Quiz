@@ -4,14 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 
 import kotlinx.android.synthetic.main.activity_main.*
+
 import kotlin.random.Random
 
 var PACKAGE_NAME: String? = null
 
 class MainActivity : Audio() {
 
+
+    var primera = true;
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -22,8 +26,6 @@ class MainActivity : Audio() {
 //                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
 //        }
 
-
-
         setContentView(R.layout.activity_main)
         //randomBg()
         setBgUser()
@@ -32,12 +34,32 @@ class MainActivity : Audio() {
 
         PlayerSettings.appStart = false
 
+        val builder = AlertDialog.Builder(this)
+
+
         bt_play.setOnClickListener {
-            val intent = Intent(this, Set_Name::class.java)
-            startActivity(intent)
+
+            if (LoadData.prefs.name.isEmpty() || LoadData.prefs.name == "") {
+
+                if (primera == true) {
+                    builder.setTitle("No has insertado nombre de usuario")
+                    builder.setMessage("Si no pones usuario no guardaras la clasificacion")
+                    builder.show()
+                    primera = false
+
+                } else {
+                    val intent = Intent(this, QuizFragments::class.java)
+                    startActivity(intent)
+                }
+            } else {
+                val intent = Intent(this, QuizFragments::class.java)
+                startActivity(intent)
+
+            }
         }
 
         bt_ajustes.setOnClickListener {
+            primera = true
             val intent = Intent(this, AudioScreen::class.java)
             startActivity(intent)
         }

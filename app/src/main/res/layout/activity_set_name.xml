@@ -7,7 +7,7 @@
     tools:context=".Set_Name">
 
     <EditText
-        android:id="@+id/et_set_user_name"
+        android:id="@+id/et_set_user_name_feo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -31,6 +31,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_set_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_set_user_name_feo"
         app:layout_constraintVertical_bias="0.531" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="112dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

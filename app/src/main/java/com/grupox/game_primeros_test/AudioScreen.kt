@@ -2,15 +2,28 @@ package com.grupox.game_primeros_test
 
 import android.os.Bundle
 import android.media.AudioManager
+import android.os.CountDownTimer
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.EditText
+import android.widget.Toast
+
 import kotlinx.android.synthetic.main.activity_audio_screen.*
+import kotlinx.android.synthetic.main.activity_set_name.*
 
 class AudioScreen : Audio() {
 
     var audioManager: AudioManager? = null
     var vtuber: Vtuber? = null
     var vtuberName = ""
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +36,19 @@ class AudioScreen : Audio() {
                 packageName
             )
         )
-        playAnimationOnEnter()
+        setUpIU()
         bt_sound.setOnClickListener {
             play_stop()
         }
+
+
+
+        et_set_user_name.afterTextChangedDelayed {
+            LoadData.prefs.name=it
+        }
+
+        //*/
+
         rb_5preguntas.setOnClickListener  { LoadData.prefs.nPreguntas = 5 }
         rb_10preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 10 }
         rb_15preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 15 }
@@ -74,7 +96,7 @@ class AudioScreen : Audio() {
         if (hasFocus) hideSystemUI()
     }
 
-    fun playAnimationOnEnter() {
+    fun setUpIU() {
         if (PlayerSettings.played) {
             bt_sound.setAnimation(R.raw.sound)
             bt_sound.playAnimation()
@@ -84,6 +106,11 @@ class AudioScreen : Audio() {
             bt_sound.playAnimation()
 
         }
+        if(LoadData.prefs.name.isNotEmpty()){
+            et_set_user_name.setText(LoadData.prefs.name)
+        }
+
+
         when (LoadData.prefs.nPreguntas) {
             5 -> {
                 rb_5preguntas.isChecked = true
@@ -109,6 +136,31 @@ class AudioScreen : Audio() {
         }
 
     }
+
+
+    // https://stackoverflow.com/questions/35224459/how-to-detect-if-users-stop-typing-in-edittext-android
+
+    fun EditText.afterTextChangedDelayed(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            var timer: CountDownTimer? = null
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(editable: Editable?) {
+                timer?.cancel()
+                timer = object : CountDownTimer(1000, 1500) {
+                    override fun onTick(millisUntilFinished: Long) {}
+                    override fun onFinish() {
+                        afterTextChanged.invoke(editable.toString())
+                    }
+                }.start()
+            }
+        })
+    }
+
+
 
 
     private fun hideSystemUI() {

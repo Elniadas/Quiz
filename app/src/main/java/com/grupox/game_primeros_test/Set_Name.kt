@@ -3,7 +3,6 @@ package com.grupox.game_primeros_test
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_set_name.*
 
@@ -22,8 +21,10 @@ class Set_Name : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
 
+
+
         bt_empezar.setOnClickListener {
-            if (et_set_user_name.text.toString().isEmpty()) {
+            if (et_set_user_name_feo.text.toString().isEmpty()) {
                 if (primera == true) {
                     builder.setTitle("No has insertado nombre de usuario")
                     builder.setMessage("Si no pones usuario no guardaras la clasificacion")
@@ -37,7 +38,7 @@ class Set_Name : AppCompatActivity() {
                     finish()
                 }
             }else {
-                LoadData.prefs.name=et_set_user_name.text.toString()
+                LoadData.prefs.name=et_set_user_name_feo.text.toString()
                 val intent = Intent(this, QuizFragments::class.java)
                 startActivity(intent)
                 finish()
@@ -54,7 +55,7 @@ class Set_Name : AppCompatActivity() {
 
     private fun startUi(){
         if(LoadData.prefs.name.isNotEmpty()){
-            et_set_user_name.setText(LoadData.prefs.name)
+            et_set_user_name_feo.setText(LoadData.prefs.name)
         }
     }
 }
