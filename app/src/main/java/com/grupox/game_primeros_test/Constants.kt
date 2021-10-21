@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.Pregunta
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
+import com.grupox.game_primeros_test.bd.PreguntasDataBase
 import kotlin.math.log
 
 object Constants {
@@ -19,6 +21,7 @@ object Constants {
     lateinit var questionImageListAux: ArrayList<Pregunta>
     lateinit var questionFourImageListAux: ArrayList<Pregunta>
     lateinit var questionVideoListAux: ArrayList<Pregunta>
+    lateinit var clasificacionesList: ArrayList<Clasificacion>
 
 
     var newBackGround: String = ""
@@ -694,13 +697,36 @@ object Constants {
 
         })
 
+        s.readAllClasificaiones.observe(app,{
+            clasificacion->
+            clasificacionesList =ArrayList(clasificacion)
+        })
+
+
+
     }
 
     fun read() {
+        if(questionFourImageListAux.count()>0)
         Log.i("asdwdqwe", questionFourImageListAux.toString())
+        if(questionImageListAux.count()>0)
         Log.i("asdwdqwe", questionImageListAux.toString())
+        if(questionGifListAux.count()>0)
         Log.i("asdwdqwe", questionGifListAux.toString())
+        if(questionVideoListAux.count()>0)
         Log.i("asdwdqwe", questionVideoListAux.toString())
+        if(clasificacionesList.count()>0)
+        Log.i("asdwdqwe", clasificacionesList.toString())
+    }
+
+    fun readClasificaicones(app:AppCompatActivity){
+
+        var s = ViewModelProvider(app).get(PreguntaViewModel::class.java)
+        s.readAllClasificaiones.observe(app,{
+                clasificacion->
+            Log.i("asdwdqwe", clasificacion.toString())
+        })
+
     }
 
 
@@ -722,6 +748,24 @@ object Constants {
 
         return listFragment
     }
+
+
+    fun parseIntoTime(tiempo:Long): String {
+
+        val minutes: Long = tiempo / 1000 / 60
+
+        // formula for conversion for
+        // milliseconds to seconds
+
+        // formula for conversion for
+        // milliseconds to seconds
+        val seconds: Long = tiempo / 1000 % 60
+
+        return "" + minutes + " : " + seconds
+
+    }
+
+
 
 
 }

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.Pregunta
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import com.grupox.game_primeros_test.bd.PreguntasDataBase
@@ -749,12 +750,12 @@ object AUXCREARDATA {
     }
 
     
-    fun createBASEDATA(){
-        
-        
+    fun createPreguntas(){
+
         var lista1 = getImagePreguntas()
         var lista2 = getFourImagePreguntas()
         var lista3 = getGifPreguntas()
+        var lista4 = getVideoQuestion()
 
         var i =0
       lista1.forEach {
@@ -775,8 +776,35 @@ object AUXCREARDATA {
             Log.i("pregunta3: ",it.toString())
             mViewModel.addPregunta(it)
         }
-        
-        
+
+        lista4.forEach {
+            it.id=i
+            i++
+            Log.i("pregunta3: ",it.toString())
+            mViewModel.addPregunta(it)
+        }
+
+
+
+
+
+    }
+
+    fun clasificaciones(){
+        var puesto1 = Clasificacion(LoadData.prefs.name,2,230234)
+        var puesto2 = Clasificacion("D",9,4123412)
+        var puesto3 = Clasificacion("A",9,41231243)
+        var puesto4 = Clasificacion("el",10,12543)
+        var puesto5 = Clasificacion("el",15,43235)
+        var puesto6 = Clasificacion(LoadData.prefs.name,15,65344)
+
+        mViewModel.addClasificacion(puesto1)
+        mViewModel.addClasificacion(puesto2)
+        mViewModel.addClasificacion(puesto3)
+        mViewModel.addClasificacion(puesto4)
+        mViewModel.addClasificacion(puesto5)
+        mViewModel.addClasificacion(puesto6)
+
     }
 
 

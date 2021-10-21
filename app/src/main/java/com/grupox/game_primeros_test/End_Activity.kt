@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Clasificacion
+import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import kotlinx.android.synthetic.main.activity_end.*
 
 class End_Activity : AppCompatActivity() {
@@ -14,8 +17,12 @@ class End_Activity : AppCompatActivity() {
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
         }
         setContentView(R.layout.activity_end)
+
+        var _PreguntaViewModer = ViewModelProvider(this).get(PreguntaViewModel::class.java)
+
         tv_rightQuestions.text =
-            "Preguntas acertadas en total : ${PlayerSettings.rightQuestions}/${LoadData.prefs.nPreguntas}"
+            "Preguntas acertadas de ${LoadData.prefs.name}  en total : ${PlayerSettings.rightQuestions}/" +
+                    "${LoadData.prefs.nPreguntas} con un tiempo de: "+Constants.parseIntoTime(PlayerSettings.tiempoPrueba)
 
         bt_playAgain.setOnClickListener {
             val intent = Intent(this, QuizFragments::class.java)

@@ -18,6 +18,8 @@ object PlayerSettings {
     var questAnswered = false
     var buttonSoundPlayer: MediaPlayer? = null
 
+    var tiempoPrueba :Long=0
+
     fun startMusic(context: Context) {
         if (player == null) {
 

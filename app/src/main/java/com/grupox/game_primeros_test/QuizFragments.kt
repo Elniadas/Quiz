@@ -6,7 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
+import com.grupox.game_primeros_test.bd.Clasificacion
+import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class QuizFragments : Audio() {
@@ -16,6 +21,9 @@ class QuizFragments : Audio() {
     var _currentFragment: Int = -1
     private val nPreguntas = LoadData.prefs.nPreguntas
     var _preguntasCompletadas = 0
+    var t_inicio: Long? = null
+    var t_fin: Long? = null
+    private lateinit var _PreguntaViewModer: PreguntaViewModel
 
 
     @SuppressLint("SetTextI18n")
@@ -34,15 +42,11 @@ class QuizFragments : Audio() {
         pb_quiz.max = nPreguntas
         setFragment()
 
-        //Boton
+        PlayerSettings.tiempoPrueba=0
 
+        t_inicio = System.currentTimeMillis()
 
-//        bt_confirmar_quiz.setOnClickListener {
-//            Log.i("PREGUNTAS: ", "Preguntas completadas : " + _preguntasCompletadas)
-//
-//            avanzar()
-//
-//        }
+        _PreguntaViewModer = ViewModelProvider(this).get(PreguntaViewModel::class.java)
 
     }
 
@@ -109,28 +113,22 @@ class QuizFragments : Audio() {
         if (_preguntasCompletadas == nPreguntas) {
 
             if (_fragments!![_currentFragment].isCompleted()) {
+
+                t_fin = System.currentTimeMillis()
+                var tiempo = t_fin!! - t_inicio!!
+                var c = Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
+                _PreguntaViewModer.addClasificacion(c)
+                PlayerSettings.tiempoPrueba=tiempo
+
+
+
                 val intent = Intent(this, End_Activity::class.java)
                 startActivity(intent)
                 finish()
             }
-//            else {
-//                if (!PlayerSettings.questAnswered) {
-//                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
-//
-//                }
-//            }
 
         } else {
-//            if (PlayerSettings.questAnswered) {
-//                bt_confirmar_quiz.text = "Siguiente"
-//                if (_preguntasCompletadas == nPreguntas - 1) {
-//                    bt_confirmar_quiz.text = "Finalizar"
-//                }
             setFragment()
-
-//            } else {
-//                bt_confirmar_quiz.text = "Responde a la pregunta primero"
-//            }
         }
     }
 

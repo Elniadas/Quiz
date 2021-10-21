@@ -64,7 +64,13 @@ class MainActivity : Audio() {
             startActivity(intent)
         }
 
+//        AUXCREARDATA.inicializar(this)
+//        AUXCREARDATA.createPreguntas()
+        //AUXCREARDATA.clasificaciones()
+
         Constants.getPreguntasImage(this)
+
+
 
     }
 

@@ -8,6 +8,7 @@ class PreferencesDataClass(context: Context) {
     val SHARED_NAME = "user_name"
     val NUM_QUESTIONS = "num_questions"
     val BOOL_AUDIO = "audio_state"
+
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
 
     var name: String
