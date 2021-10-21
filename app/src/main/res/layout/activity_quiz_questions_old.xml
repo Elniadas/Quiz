@@ -12,42 +12,25 @@
     <TextView
         android:id="@+id/tv_texto_fragmento"
         android:layout_width="match_parent"
-        android:padding="3dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:shadowColor="#C2CCF1"
-        android:shadowDx="1"
         android:background="@drawable/estilo_texto_enunciado"
         android:maxHeight="83dp"
+        android:minHeight="83dp"
+        android:padding="3dp"
+        android:shadowColor="#C2CCF1"
+        android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="8"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragmentContainer_Quiz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.041" />
+        app:layout_constraintTop_toBottomOf="@id/tv_texto_progress_bar" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_confirmar_quiz"
-
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/estilo_boton_naranja"
-        android:clickable="true"
-        android:text="Siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer_Quiz"
@@ -55,11 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_confirmar_quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_texto_fragmento"
-        app:layout_constraintVertical_bias="0.9"
         tools:layout="@layout/fragment_one_image" />
 
     <ProgressBar
@@ -67,12 +48,12 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="fill_parent"
         android:layout_height="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_confirmar_quiz"
+        app:layout_constraintBottom_toTopOf="@id/tv_texto_fragmento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_texto_progress_bar"

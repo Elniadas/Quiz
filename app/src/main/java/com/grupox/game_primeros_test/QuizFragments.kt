@@ -37,12 +37,12 @@ class QuizFragments : Audio() {
         //Boton
 
 
-        bt_confirmar_quiz.setOnClickListener {
-            Log.i("PREGUNTAS: ", "Preguntas completadas : " + _preguntasCompletadas)
-
-            avanzar()
-
-        }
+//        bt_confirmar_quiz.setOnClickListener {
+//            Log.i("PREGUNTAS: ", "Preguntas completadas : " + _preguntasCompletadas)
+//
+//            avanzar()
+//
+//        }
 
     }
 
@@ -103,31 +103,32 @@ class QuizFragments : Audio() {
     }
 
 
-    fun avanzar(){
+    fun avanzar() {
         if (_preguntasCompletadas == nPreguntas) {
 
             if (_fragments!![_currentFragment].isCompleted()) {
                 val intent = Intent(this, End_Activity::class.java)
                 startActivity(intent)
                 finish()
-            } else {
-                if (!PlayerSettings.questAnswered) {
-                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
-
-                }
             }
+//            else {
+//                if (!PlayerSettings.questAnswered) {
+//                    bt_confirmar_quiz.text = "Responde a la pregunta primero"
+//
+//                }
+//            }
 
         } else {
-            if (PlayerSettings.questAnswered) {
-                bt_confirmar_quiz.text = "Siguiente"
-                if (_preguntasCompletadas == nPreguntas - 1) {
-                    bt_confirmar_quiz.text = "Finalizar"
-                }
-                setFragment()
+//            if (PlayerSettings.questAnswered) {
+//                bt_confirmar_quiz.text = "Siguiente"
+//                if (_preguntasCompletadas == nPreguntas - 1) {
+//                    bt_confirmar_quiz.text = "Finalizar"
+//                }
+            setFragment()
 
-            } else {
-                bt_confirmar_quiz.text = "Responde a la pregunta primero"
-            }
+//            } else {
+//                bt_confirmar_quiz.text = "Responde a la pregunta primero"
+//            }
         }
     }
 

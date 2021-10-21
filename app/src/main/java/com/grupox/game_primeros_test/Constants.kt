@@ -29,13 +29,13 @@ object Constants {
             return field
         }
 
-    fun getVideoQuestion(){
+    fun getVideoQuestion() {
 
         questionVideoList = ArrayList(questionVideoListAux)
     }
 
     fun getFourImageQuestions() {
-        questionGifList= ArrayList(questionGifListAux)
+        questionFourImageList = ArrayList(questionFourImageListAux)
     }
 
     fun getGifQuestions() {
@@ -43,7 +43,7 @@ object Constants {
     }
 
     fun getImageQuestions() {
-        questionImageList= ArrayList(questionImageListAux)
+        questionImageList = ArrayList(questionImageListAux)
     }
 
     /*
@@ -722,7 +722,6 @@ object Constants {
 
         return listFragment
     }
-
 
 
 }
