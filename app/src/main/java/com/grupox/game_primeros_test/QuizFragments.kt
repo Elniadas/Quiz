@@ -39,6 +39,7 @@ class QuizFragments : Audio() {
         //Initialize variables
         _fragments = Constants.getFragments()
         PlayerSettings.rightQuestions = 0
+        PlayerSettings.wrongQuestions = 0
         pb_quiz.max = nPreguntas
         setFragment()
 

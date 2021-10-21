@@ -111,6 +111,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
                         video_question.start()
                         mediaController!!.hide()
                         mediaController!!.show(3)
+                        video_play_button.visibility = View.INVISIBLE
                     }
                 }
 

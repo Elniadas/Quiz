@@ -28,6 +28,14 @@
                 android:layout_height="280dp"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter" />
+
+            <ImageView
+                android:id="@+id/video_play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:srcCompat="@tools:sample/avatars"
+                android:src="@drawable/icon_play_video"/>
         </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatButton
