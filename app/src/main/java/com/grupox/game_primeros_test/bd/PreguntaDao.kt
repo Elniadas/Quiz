@@ -35,7 +35,7 @@ interface PreguntaDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addClasificacion(clasificacion: Clasificacion)
 
-    @Query("SELECT * FROM Clasificacion ORDER BY puntuation DESC")
+    @Query("SELECT * FROM Clasificacion ORDER BY puntuation DESC, tiempo DESC")
     fun getAllClasificaciones(): LiveData<List<Clasificacion>>
 
 }

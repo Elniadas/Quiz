@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Game_primeros_test">
         <activity
-            android:name=".Set_Name"
+            android:name=".Ladderboard"
             android:exported="false" />
         <activity
             android:name=".QuizFragments"

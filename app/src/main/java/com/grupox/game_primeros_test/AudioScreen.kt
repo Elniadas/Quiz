@@ -12,7 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_audio_screen.*
-import kotlinx.android.synthetic.main.activity_set_name.*
+
 
 class AudioScreen : Audio() {
 
