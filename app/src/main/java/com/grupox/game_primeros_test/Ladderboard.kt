@@ -2,8 +2,13 @@ package com.grupox.game_primeros_test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
+import kotlinx.android.synthetic.main.activity_ladderboard.*
 
 class Ladderboard : AppCompatActivity() {
 
@@ -13,7 +18,18 @@ class Ladderboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ladderboard)
 
-        val adapter=ListAdapter()
+
+        // Recyclerview
+        val adapter = ListAdapter()
+        val recyclerView = recyclerview
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // UserViewModel
+        mClasificacionViewModel = ViewModelProvider(this).get(PreguntaViewModel::class.java)
+        mClasificacionViewModel.readAllClasificaiones.observe(this, { clasificacion ->
+            adapter.setData(clasificacion)
+        })
 
 
     }

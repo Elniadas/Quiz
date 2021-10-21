@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.grupox.game_primeros_test.bd.Clasificacion
 import kotlinx.android.synthetic.main.activity_ladderboard.view.*
+import kotlinx.android.synthetic.main.custom_row.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
@@ -14,7 +15,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.activity_ladderboard, parent, false))
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_row, parent, false))
     }
 
     override fun getItemCount(): Int {

@@ -33,7 +33,6 @@ class MainActivity : Audio() {
             PlayerSettings.startMusic(applicationContext)
 
 
-
         val builder = AlertDialog.Builder(this)
 
 
@@ -63,13 +62,17 @@ class MainActivity : Audio() {
             val intent = Intent(this, AudioScreen::class.java)
             startActivity(intent)
         }
+        bt_clasificacion.setOnClickListener {
+            primera = true
+            val intent = Intent(this, Ladderboard::class.java)
+            startActivity(intent)
+        }
 
-//        AUXCREARDATA.inicializar(this)
+        //AUXCREARDATA.inicializar(this)
 //        AUXCREARDATA.createPreguntas()
         //AUXCREARDATA.clasificaciones()
 
         Constants.getPreguntasImage(this)
-
 
 
     }
