@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.MediaController
 import androidx.core.content.ContextCompat
 import com.grupox.game_primeros_test.bd.Pregunta
+import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
 import kotlinx.android.synthetic.main.fragment_quiz_video_type.*
 import kotlin.random.Random
 
@@ -34,6 +35,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
             PlayerSettings.buttonSound(R.raw.fallo, requireContext().applicationContext)
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.estilo_boton_incorrecto)
+            PlayerSettings.wrongQuestions += 1
         } else {
             PlayerSettings.buttonSound(R.raw.correcto, requireContext().applicationContext)
             PlayerSettings.rightQuestions += 1

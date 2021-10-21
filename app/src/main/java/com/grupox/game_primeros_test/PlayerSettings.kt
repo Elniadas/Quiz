@@ -14,6 +14,7 @@ object PlayerSettings {
         }
 
     var rightQuestions: Int = 0
+    var wrongQuestions: Int = 0
     var questAnswered = false
     var buttonSoundPlayer: MediaPlayer? = null
 

@@ -53,6 +53,8 @@ class QuizFragments : Audio() {
         tv_texto_progress_bar.text =
             _preguntasCompletadas.toString() + " / " + LoadData.prefs.nPreguntas.toString()
         pb_quiz.progress = _preguntasCompletadas
+        tv_text_wrong.text = (PlayerSettings.wrongQuestions).toString()
+        tv_text_correct.text = (PlayerSettings.rightQuestions).toString()
     }
 
     private fun getNextFragment(): Int {

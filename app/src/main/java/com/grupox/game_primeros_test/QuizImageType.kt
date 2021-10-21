@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.grupox.game_primeros_test.bd.Pregunta
+import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
 import kotlinx.android.synthetic.main.fragment_one_image.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -27,7 +28,7 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
     private var mSelectedOptionPosition: Int = 0
     private var mQuestion: Pregunta? = null
     private var _isCompleted = false
-    private val wait_time :Long = 1000
+    private val wait_time: Long = 1000
     /*
      constructor(list: ArrayList<Question>) : this() {
          mQuestionsLists = list
@@ -38,8 +39,6 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
      }
 
      */
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,6 +147,7 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
             PlayerSettings.buttonSound(R.raw.fallo, requireContext().applicationContext)
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.estilo_boton_incorrecto)
+            PlayerSettings.wrongQuestions += 1
         } else {
             PlayerSettings.buttonSound(R.raw.correcto, requireContext().applicationContext)
             PlayerSettings.rightQuestions += 1
@@ -212,7 +212,7 @@ class QuizImageType() : QuizBaseTypeFragment(), View.OnClickListener {
             // UI code goes here
             var a = activity as QuizFragments
             a.avanzar()
-        },wait_time)
+        }, wait_time)
     }
 
 }

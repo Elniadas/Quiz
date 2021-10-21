@@ -25,8 +25,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.timerTask
 import kotlin.random.Random
 import android.os.Looper
-
-
+import kotlinx.android.synthetic.main.activity_quiz_questions_old.*
 
 
 class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
@@ -34,7 +33,7 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
     private var mSelectedOptionPosition: Int = 0
     private var mQuestion: Pregunta? = null
     private var _isCompleted = false
-    private val wait_time :Long = 1000
+    private val wait_time: Long = 1000
 
     override fun isCompleted(): Boolean {
         return _isCompleted
@@ -77,6 +76,7 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
         if (mSelectedOptionPosition !== mQuestion!!.correctAnswer) {
             PlayerSettings.buttonSound(R.raw.fallo, requireContext().applicationContext)
             showSolutionTextBorder(mSelectedOptionPosition, R.drawable.wrong_image_border)
+            PlayerSettings.wrongQuestions += 1
         } else {
             PlayerSettings.buttonSound(R.raw.correcto, requireContext().applicationContext)
             PlayerSettings.rightQuestions += 1
@@ -196,13 +196,11 @@ class QuizFourImageType : QuizBaseTypeFragment(), View.OnClickListener {
         removeListeners()
 
 
-
-
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(Runnable {
             // UI code goes here
             var a = activity as QuizFragments
             a.avanzar()
-        },wait_time)
+        }, wait_time)
     }
 }
