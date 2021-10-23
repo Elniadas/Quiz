@@ -17,8 +17,14 @@ data class Clasificacion(
 
     fun parseIntoTime(): String {
 
+        var cadena =""
+
         val minutes: Long = tiempo / 1000 / 60
 
+        if(minutes<10)
+            cadena+="0"+minutes+" :"
+        else
+            cadena+=minutes.toString()+" :"
         // formula for conversion for
         // milliseconds to seconds
 
@@ -26,7 +32,12 @@ data class Clasificacion(
         // milliseconds to seconds
         val seconds: Long = tiempo / 1000 % 60
 
-        return "" + minutes + " : " + seconds
+        if(seconds<10)
+            cadena+=" 0"+seconds
+        else
+            cadena+= " "+seconds
+
+        return cadena
 
     }
 

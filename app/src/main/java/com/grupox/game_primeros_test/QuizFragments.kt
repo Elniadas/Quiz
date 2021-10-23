@@ -3,6 +3,9 @@ package com.grupox.game_primeros_test
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -21,8 +24,6 @@ class QuizFragments : Audio() {
     var _currentFragment: Int = -1
     private val nPreguntas = LoadData.prefs.nPreguntas
     var _preguntasCompletadas = 0
-    var t_inicio: Long? = null
-    var t_fin: Long? = null
     private lateinit var _PreguntaViewModer: PreguntaViewModel
 
 
@@ -43,9 +44,10 @@ class QuizFragments : Audio() {
         pb_quiz.max = nPreguntas
         setFragment()
 
-        PlayerSettings.tiempoPrueba=0
+        PlayerSettings.tiempoPrueba = 0
 
-        t_inicio = System.currentTimeMillis()
+        ch_cronometro.base = SystemClock.elapsedRealtime()
+        ch_cronometro.start()
 
         _PreguntaViewModer = ViewModelProvider(this).get(PreguntaViewModel::class.java)
 
@@ -115,12 +117,19 @@ class QuizFragments : Audio() {
 
             if (_fragments!![_currentFragment].isCompleted()) {
 
-                t_fin = System.currentTimeMillis()
-                var tiempo = t_fin!! - t_inicio!!
+
+                ch_cronometro.stop()
+
+
+                var tiempo = (SystemClock.elapsedRealtime() - ch_cronometro.base)
+                Log.i(
+                    "ch: ",
+                    tiempo.toString()
+                )
+                Log.i("casero: ", tiempo.toString())
                 var c = Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
                 _PreguntaViewModer.addClasificacion(c)
-                PlayerSettings.tiempoPrueba=tiempo
-
+                PlayerSettings.tiempoPrueba = tiempo
 
 
                 val intent = Intent(this, End_Activity::class.java)
