@@ -5,11 +5,9 @@ import android.media.AudioManager
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.EditText
-import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_audio_screen.*
 
@@ -19,10 +17,6 @@ class AudioScreen : Audio() {
     var audioManager: AudioManager? = null
     var vtuber: Vtuber? = null
     var vtuberName = ""
-
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,16 +34,19 @@ class AudioScreen : Audio() {
         bt_sound.setOnClickListener {
             play_stop()
         }
+        back_adjustent_button.setOnClickListener{
+            onBackPressed()
+        }
 
 
 
         et_set_user_name.afterTextChangedDelayed {
-            LoadData.prefs.name=it
+            LoadData.prefs.name = it
         }
 
         //*/
 
-        rb_5preguntas.setOnClickListener  { LoadData.prefs.nPreguntas = 5 }
+        rb_5preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 5 }
         rb_10preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 10 }
         rb_15preguntas.setOnClickListener { LoadData.prefs.nPreguntas = 15 }
         setupCustomSpinner()
@@ -106,7 +103,7 @@ class AudioScreen : Audio() {
             bt_sound.playAnimation()
 
         }
-        if(LoadData.prefs.name.isNotEmpty()){
+        if (LoadData.prefs.name.isNotEmpty()) {
             et_set_user_name.setText(LoadData.prefs.name)
         }
 
@@ -161,8 +158,6 @@ class AudioScreen : Audio() {
     }
 
 
-
-
     private fun hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -174,8 +169,8 @@ class AudioScreen : Audio() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 // Hide the nav bar and status bar
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
-        //or View.SYSTEM_UI_FLAG_FULLSCREEN)
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
 
     // Shows the system bars by removing all the flags

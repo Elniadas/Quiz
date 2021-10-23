@@ -66,7 +66,7 @@
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_end.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions.xml" value="0.264" />
-        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.4" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_set_name.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_gif.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_image.xml" value="0.259375" />
@@ -81,5 +81,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.4" />
+      </ProjectState>
+    </option>
   </component>
 </project>

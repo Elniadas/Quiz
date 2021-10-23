@@ -15,7 +15,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="Theme.Ajustes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Ajustes" parent="Theme.MaterialComponents.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
