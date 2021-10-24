@@ -17,13 +17,14 @@ class Ladderboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ladderboard)
-
+        setBgUser()
 
         // Recyclerview
         val adapter = ListAdapter()
         val recyclerView = recyclerview
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setBackgroundResource(R.drawable.estilo_texto_enunciado)
 
         // UserViewModel
         mClasificacionViewModel = ViewModelProvider(this).get(PreguntaViewModel::class.java)
@@ -32,5 +33,15 @@ class Ladderboard : AppCompatActivity() {
         })
 
 
+    }
+
+    private fun setBgUser() {
+        leaderboard_bg.setImageResource(
+            resources.getIdentifier(
+                Constants.newBackGround,
+                "drawable",
+                packageName
+            )
+        )
     }
 }

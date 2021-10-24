@@ -77,6 +77,11 @@ class MainActivity : Audio() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        setBgUser()
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) hideSystemUI()

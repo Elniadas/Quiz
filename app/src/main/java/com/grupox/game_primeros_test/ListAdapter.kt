@@ -25,7 +25,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = clasificacionList[position]
         holder.itemView.tv_username.text = currentItem.user
-        holder.itemView.tv_puntuacion.text ="Puntuacion : " +currentItem.puntuation
+        holder.itemView.tv_puntuacion.text ="Puntuacion: " +currentItem.puntuation
         holder.itemView.tv_tiempo.text = "Tiempo: "+currentItem.parseIntoTime()
 
     }
