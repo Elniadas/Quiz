@@ -1,6 +1,9 @@
 package com.grupox.game_primeros_test
 
-data class Vtuber(val image: Int, val name: String)
+import android.util.Log
+
+
+data class Vtuber(val image: Int, val name: String, val listPos: Int)
 
 object Vtubers {
 
@@ -50,7 +53,7 @@ object Vtubers {
 
     var list: ArrayList<Vtuber>? = null
         get() {
-
+            var number = 0
             if (field != null)
                 return field
 
@@ -60,7 +63,8 @@ object Vtubers {
                 val imageId = images[i]
                 val vtuberName = names[i]
 
-                val vtuber = Vtuber(imageId, vtuberName)
+                val vtuber = Vtuber(imageId, vtuberName, list!!.size)
+                Log.i("Vtuber", vtuber.name + " " + list!!.size)
                 field!!.add(vtuber)
             }
 

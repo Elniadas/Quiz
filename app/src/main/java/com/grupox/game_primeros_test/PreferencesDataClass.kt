@@ -8,6 +8,7 @@ class PreferencesDataClass(context: Context) {
     val SHARED_NAME = "user_name"
     val NUM_QUESTIONS = "num_questions"
     val BOOL_AUDIO = "audio_state"
+    val POS_FONDO = "pos_fondo"
 
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
 
@@ -20,4 +21,7 @@ class PreferencesDataClass(context: Context) {
     var audio:Boolean
         get() = prefs.getBoolean(BOOL_AUDIO,true)
         set(value) = prefs.edit().putBoolean(BOOL_AUDIO,value).apply()
+    var fondo:Int
+        get() = prefs.getInt(POS_FONDO,0)
+        set(value) = prefs.edit().putInt(POS_FONDO,value).apply()
 }

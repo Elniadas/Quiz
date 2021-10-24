@@ -34,7 +34,7 @@ class AudioScreen : Audio() {
         bt_sound.setOnClickListener {
             play_stop()
         }
-        back_adjustent_button.setOnClickListener{
+        back_adjustent_button.setOnClickListener {
             onBackPressed()
         }
 
@@ -68,6 +68,7 @@ class AudioScreen : Audio() {
                 val selectedItem = parent!!.getItemAtPosition(position)
                 vtuber = selectedItem as Vtuber
                 vtuberName = vtuber!!.name
+                LoadData.prefs.fondo = vtuber!!.listPos
                 vtuberName += "_new"
 
                 Constants.newBackGround = vtuberName.lowercase()

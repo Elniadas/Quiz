@@ -28,7 +28,7 @@ class MainActivity : Audio() {
 
         setContentView(R.layout.activity_main)
         //randomBg()
-        setBgUser()
+        setBgUserPrefs()
         if (PlayerSettings.played)
             PlayerSettings.startMusic(applicationContext)
 
@@ -169,6 +169,20 @@ class MainActivity : Audio() {
                 packageName
             )
         )
+    }
+
+    private fun setBgUserPrefs() {
+        Constants.newBackGround =
+            Vtubers.list?.get(LoadData.prefs.fondo)?.name?.lowercase() + "_new"
+        main_menu_background.setImageResource(
+            resources.getIdentifier(
+                Constants.newBackGround,
+                "drawable",
+                packageName
+            )
+        )
+        Vtubers.changeFirtsItem(LoadData.prefs.fondo)
+
     }
 
     // Shows the system bars by removing all the flags
