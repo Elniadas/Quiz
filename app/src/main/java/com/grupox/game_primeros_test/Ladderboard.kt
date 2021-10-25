@@ -18,7 +18,9 @@ class Ladderboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ladderboard)
         setBgUser()
-
+        back_leaderboard_button.setOnClickListener {
+            onBackPressed()
+        }
         // Recyclerview
         val adapter = ListAdapter()
         val recyclerView = recyclerview

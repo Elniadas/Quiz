@@ -131,8 +131,8 @@
 
     <ImageButton
         android:id="@+id/back_adjustent_button"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:background="@drawable/boton_ajustes_menu_sin_fondo"
         android:scaleType="fitCenter"
         app:layout_constraintHorizontal_bias="0.0"
@@ -141,26 +141,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_set_user_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-       android:id="@+id/et_set_user_layout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="300sp"
         android:hint="Nombre de usuario"
+        android:textColorHint="#656565"
+        app:boxStrokeColor="@color/purple_700"
         app:counterEnabled="true"
         app:counterMaxLength="12"
-        app:endIconMode="custom"
+        app:counterOverflowTextColor="@color/purple_700"
+        app:counterTextColor="@color/black"
         app:endIconDrawable="@drawable/ic_check_mark"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_set_user_name"
-            android:maxLength="12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             />
+            android:maxLength="12"
+            android:textColor="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
