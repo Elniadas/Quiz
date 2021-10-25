@@ -42,7 +42,7 @@ class MainActivity : Audio() {
 
                 if (primera == true) {
                     builder.setTitle("No has insertado nombre de usuario")
-                    builder.setMessage("Si no pones usuario no guardaras la clasificacion")
+                    builder.setMessage("Si no pones usuario no guardaras la clasificacion\n\n Para cambiarlo entra en opciones")
                     builder.show()
                     primera = false
 
@@ -68,7 +68,7 @@ class MainActivity : Audio() {
             startActivity(intent)
         }
 
-        //AUXCREARDATA.inicializar(this)
+        //       AUXCREARDATA.inicializar(this)
 //        AUXCREARDATA.createPreguntas()
         //AUXCREARDATA.clasificaciones()
 

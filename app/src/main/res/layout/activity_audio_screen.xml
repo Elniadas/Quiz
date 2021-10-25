@@ -7,6 +7,7 @@
     android:background="@drawable/achan_new"
     tools:context=".AudioScreen">
 
+
     <ImageView
         android:id="@+id/adjustment_background"
         android:layout_width="0dp"
@@ -21,23 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/et_set_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="184dp"
-        android:ems="10"
-        android:focusableInTouchMode="true"
-        android:focusedByDefault="false"
-        android:gravity="center"
-        android:hint="Inserte su nombre"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -60,11 +44,9 @@
         android:padding="15dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintBottom_toTopOf="@id/et_set_user_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.078">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
 
         <RadioButton
@@ -145,9 +127,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/adjustment_background"
         app:layout_constraintEnd_toEndOf="@id/adjustment_background"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_set_user_name"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
         android:id="@+id/back_adjustent_button"
@@ -159,5 +139,28 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+       android:id="@+id/et_set_user_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300sp"
+        android:hint="Nombre de usuario"
+        app:counterEnabled="true"
+        app:counterMaxLength="12"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_check_mark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_set_user_name"
+            android:maxLength="12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

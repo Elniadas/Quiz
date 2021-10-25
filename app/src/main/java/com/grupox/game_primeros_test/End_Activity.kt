@@ -19,9 +19,12 @@ class End_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_end)
 
         var _PreguntaViewModer = ViewModelProvider(this).get(PreguntaViewModel::class.java)
+        var nombre = LoadData.prefs.name
+        if(nombre =="")
+            nombre = "anonimo"
 
         tv_rightQuestions.text =
-            "Preguntas acertadas de ${LoadData.prefs.name}  en total : ${PlayerSettings.rightQuestions}/" +
+            "Preguntas acertadas de ${nombre}  en total : ${PlayerSettings.rightQuestions}/" +
                     "${LoadData.prefs.nPreguntas} con un tiempo de: "+Constants.parseIntoTime(PlayerSettings.tiempoPrueba)
 
         bt_playAgain.setOnClickListener {

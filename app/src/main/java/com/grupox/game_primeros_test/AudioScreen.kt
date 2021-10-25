@@ -19,6 +19,8 @@ class AudioScreen : Audio() {
     var vtuberName = ""
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_screen)
@@ -43,6 +45,11 @@ class AudioScreen : Audio() {
         et_set_user_name.afterTextChangedDelayed {
             LoadData.prefs.name = it
         }
+
+        et_set_user_layout.setEndIconOnClickListener({
+            LoadData.prefs.name = et_set_user_name.text.toString()
+        })
+
 
         //*/
 
@@ -106,6 +113,7 @@ class AudioScreen : Audio() {
         }
         if (LoadData.prefs.name.isNotEmpty()) {
             et_set_user_name.setText(LoadData.prefs.name)
+//            et_set_user_name.setTe
         }
 
 
