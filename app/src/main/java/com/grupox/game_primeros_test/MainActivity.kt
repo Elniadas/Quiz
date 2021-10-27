@@ -3,10 +3,13 @@ package com.grupox.game_primeros_test
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.alert_layout.*
+import kotlinx.android.synthetic.main.alert_layout.view.*
 
 import kotlin.random.Random
 
@@ -40,16 +43,19 @@ class MainActivity : Audio() {
 
             if (LoadData.prefs.name.isEmpty() || LoadData.prefs.name == "") {
 
-                if (primera == true) {
-                    builder.setTitle("No has insertado nombre de usuario")
-                    builder.setMessage("Si no pones usuario no guardaras la clasificacion\n\n Para cambiarlo entra en opciones")
-                    builder.show()
-                    primera = false
+                crearDialogo()
 
-                } else {
-                    val intent = Intent(this, QuizFragments::class.java)
-                    startActivity(intent)
-                }
+
+//                if (primera == true) {
+//                    builder.setTitle("No has insertado nombre de usuario")
+//                    builder.setMessage("Si no pones usuario no guardaras la clasificacion\n\n Para cambiarlo entra en opciones")
+//                    builder.show()
+//                    primera = false
+//
+//                } else {
+//                    val intent = Intent(this, QuizFragments::class.java)
+//                    startActivity(intent)
+//                }
             } else {
                 val intent = Intent(this, QuizFragments::class.java)
                 startActivity(intent)
@@ -75,6 +81,33 @@ class MainActivity : Audio() {
         Constants.getPreguntasImage(this)
 
 
+    }
+
+
+   private fun crearDialogo(){
+        //Inflate the dialog with custom view
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_layout, null)
+        //AlertDialogBuilder
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("Login Form")
+        //show dialog
+        val  mAlertDialog = mBuilder.show()
+        //login button click of custom layout
+        mDialogView.bt_continuar.setOnClickListener {
+            //dismiss dialog
+            mAlertDialog.dismiss()
+            val intent = Intent(this, QuizFragments::class.java)
+            startActivity(intent)
+
+        }
+        //cancel button click of custom layout
+        mDialogView.bt_cambiar.setOnClickListener {
+            //dismiss dialog
+            mAlertDialog.dismiss()
+            val intent = Intent(this, AudioScreen::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
