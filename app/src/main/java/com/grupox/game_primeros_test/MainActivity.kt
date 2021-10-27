@@ -90,7 +90,7 @@ class MainActivity : Audio() {
         //AlertDialogBuilder
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
-            .setTitle("Login Form")
+            .setTitle("No tienes usuario")
         //show dialog
         val  mAlertDialog = mBuilder.show()
         //login button click of custom layout
