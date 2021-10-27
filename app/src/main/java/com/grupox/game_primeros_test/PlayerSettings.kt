@@ -3,6 +3,7 @@ package com.grupox.game_primeros_test
 import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
+import com.grupox.game_primeros_test.bd.Clasificacion
 
 
 object PlayerSettings {
@@ -17,7 +18,7 @@ object PlayerSettings {
     var wrongQuestions: Int = 0
     var questAnswered = false
     var buttonSoundPlayer: MediaPlayer? = null
-
+    lateinit var ultimaPuntuacion : Clasificacion
     var tiempoPrueba :Long=0
 
     fun startMusic(context: Context) {

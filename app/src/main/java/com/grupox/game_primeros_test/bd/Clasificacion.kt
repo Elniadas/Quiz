@@ -17,14 +17,14 @@ data class Clasificacion(
 
     fun parseIntoTime(): String {
 
-        var cadena =""
+        var cadena = ""
 
         val minutes: Long = tiempo / 1000 / 60
 
-        if(minutes<10)
-            cadena+="0"+minutes+" :"
+        if (minutes < 10)
+            cadena += "0" + minutes + " :"
         else
-            cadena+=minutes.toString()+" :"
+            cadena += minutes.toString() + " :"
         // formula for conversion for
         // milliseconds to seconds
 
@@ -32,26 +32,31 @@ data class Clasificacion(
         // milliseconds to seconds
         val seconds: Long = tiempo / 1000 % 60
 
-        if(seconds<10)
-            cadena+=" 0"+seconds
+        if (seconds < 10)
+            cadena += " 0" + seconds
         else
-            cadena+= " "+seconds
+            cadena += " " + seconds
 
         return cadena
 
     }
 
+    fun esMejor(clasificacion: Clasificacion): Boolean {
 
+        if (puntuation == clasificacion.puntuation) {
+            return tiempo >= clasificacion.tiempo
+        } else return puntuation <= clasificacion.puntuation
+    }
 
-    fun getSeconds():Long{
+    fun getSeconds(): Long {
         return tiempo / 1000 % 60
     }
 
-    fun getMinutes():Long{
+    fun getMinutes(): Long {
         return tiempo / 1000 / 60
     }
 
     override fun toString(): String {
-        return "ID: " + id + " User: " + user + " Puntacion: " + puntuation+ "Tiempo: "+ parseIntoTime()
+        return "ID: " + id + " User: " + user + " Puntacion: " + puntuation + "Tiempo: " + parseIntoTime()
     }
 }

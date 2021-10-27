@@ -127,14 +127,15 @@ class QuizFragments : Audio() {
                     tiempo.toString()
                 )
 
-                if(LoadData.prefs.name !=""){
-                    var c = Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
+                if (LoadData.prefs.name != "") {
+                    var c =
+                        Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
+                    PlayerSettings.ultimaPuntuacion = c
                     _PreguntaViewModer.addClasificacion(c)
                     PlayerSettings.tiempoPrueba = tiempo
-                }else{
-                    Log.i("clas","nadadadadaa")
+                } else {
+                    Log.i("clas", "nadadadadaa")
                 }
-
 
 
                 val intent = Intent(this, End_Activity::class.java)
