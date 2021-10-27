@@ -1,11 +1,13 @@
 package com.grupox.game_primeros_test
 
+import android.app.Activity
 import android.os.Bundle
 import android.media.AudioManager
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.EditText
 
@@ -17,8 +19,6 @@ class AudioScreen : Audio() {
     var audioManager: AudioManager? = null
     var vtuber: Vtuber? = null
     var vtuberName = ""
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,8 +59,14 @@ class AudioScreen : Audio() {
         setupCustomSpinner()
         Constants.read()
 
+        layout_audio.setOnClickListener {
+            hideSoftKeyboard()
+            et_set_user_name.clearFocus()
+        }
+
 
     }
+
 
     private fun setupCustomSpinner() {
         val adapter = VtuberArrayAdapter(this, Vtubers.list!!)
@@ -95,6 +101,7 @@ class AudioScreen : Audio() {
 
         }
     }
+
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
@@ -190,6 +197,11 @@ class AudioScreen : Audio() {
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
     }
 
+    fun Activity.hideSoftKeyboard() {
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).apply {
+            hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
 
+    }
 }
 
