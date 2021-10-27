@@ -3,6 +3,7 @@ package com.grupox.game_primeros_test
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -10,10 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import kotlinx.android.synthetic.main.activity_end.*
+import kotlinx.android.synthetic.main.alert_clasificacion.*
+import kotlinx.android.synthetic.main.alert_clasificacion.view.*
 import kotlinx.android.synthetic.main.alert_layout.view.*
+
 
 class End_Activity : AppCompatActivity() {
 
+    var clasificaciones: ArrayList<Clasificacion> = ArrayList(Constants.clasificacionesList)
+    var posicion: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,39 +62,48 @@ class End_Activity : AppCompatActivity() {
 
 
 
-        if(CheckPolePosition()){
+        if (CheckPolePosition()) {
             crearDialogo()
         }
 
     }
 
 
-    private fun crearDialogo(){
+    private fun crearDialogo() {
+
         //Inflate the dialog with custom view
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_layout, null)
+        val mDialogViewClasificacion =
+            LayoutInflater.from(this).inflate(R.layout.alert_clasificacion, null)
         //AlertDialogBuilder
-        val mBuilder = AlertDialog.Builder(this)
-            .setView(mDialogView)
-            .setTitle("No tienes usuario")
+
+        val mBuilderClasificacion = AlertDialog.Builder(this)
+            .setView(mDialogViewClasificacion)
+            .setTitle("FELIZIDADES!")
         //show dialog
-        val  mAlertDialog = mBuilder.show()
+        val mAlertDialog = mBuilderClasificacion.show()
         //login button click of custom layout
-        mDialogView.bt_continuar.setOnClickListener {
-            //dismiss dialog
-            mAlertDialog.dismiss()
-            val intent = Intent(this, QuizFragments::class.java)
-            startActivity(intent)
+
+        var marcado= false
+
+        for (i in 0..2) {
+            if (i == posicion - 1) {
+                mDialogViewClasificacion.tv_posicion1.text =
+                    mDialogViewClasificacion.tv_posicion1.text.toString() + PlayerSettings.ultimaPuntuacion + "\n"
+                marcado=true
+            } else {
+            if(marcado)
+                mDialogViewClasificacion.tv_posicion1.text =
+                    mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i-1].toString() + "\n"
+                else
+                mDialogViewClasificacion.tv_posicion1.text =
+                    mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i].toString() + "\n"
+
+            }
 
         }
-        //cancel button click of custom layout
-        mDialogView.bt_cambiar.setOnClickListener {
-            //dismiss dialog
-            mAlertDialog.dismiss()
-            val intent = Intent(this, AudioScreen::class.java)
-            startActivity(intent)
-        }
+
+
     }
-
 
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -122,25 +137,30 @@ class End_Activity : AppCompatActivity() {
 
     private fun CheckPolePosition(): Boolean {
 
-        var clasificaciones: ArrayList<Clasificacion> = ArrayList(Constants.clasificacionesList)
 
         var cont = 1
 
         clasificaciones.forEach { clasificacion ->
             if (cont <= 3) {
-                if (clasificacion.esMejor(PlayerSettings.ultimaPuntuacion))
+                if (clasificacion.esMejor(PlayerSettings.ultimaPuntuacion)) {
+
+
+                    posicion = cont
                     return true
-                else
+                } else
                     cont++
             } else {
                 return false
             }
         }
 
-        if(cont<3)
+        if (cont < 3) {
+            posicion = clasificaciones.count()
             return true
+        }
 
-       return false
+
+        return false
     }
 
 
