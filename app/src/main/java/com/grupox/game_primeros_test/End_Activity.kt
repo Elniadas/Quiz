@@ -4,10 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import kotlinx.android.synthetic.main.activity_end.*
@@ -34,7 +38,7 @@ class End_Activity : AppCompatActivity() {
             nombre = "anonimo"
 
         tv_rightQuestions.text =
-            "Preguntas acertadas de ${nombre}  en total : ${PlayerSettings.rightQuestions}/" +
+            "Preguntas acertadas de ${nombre} en total: ${PlayerSettings.rightQuestions}/" +
                     "${LoadData.prefs.nPreguntas} con un tiempo de: " + Constants.parseIntoTime(
                 PlayerSettings.tiempoPrueba
             )
@@ -63,7 +67,7 @@ class End_Activity : AppCompatActivity() {
 
 
         if (CheckPolePosition()) {
-            crearDialogo()
+            crearDialogoMaterial()
         }
 
     }
@@ -78,31 +82,77 @@ class End_Activity : AppCompatActivity() {
 
         val mBuilderClasificacion = AlertDialog.Builder(this)
             .setView(mDialogViewClasificacion)
-            .setTitle("FELIZIDADES!")
+            .setTitle("FELICIDADES!")
         //show dialog
         val mAlertDialog = mBuilderClasificacion.show()
         //login button click of custom layout
 
-        var marcado= false
+        var marcado = false
 
         for (i in 0..2) {
             if (i == posicion - 1) {
                 mDialogViewClasificacion.tv_posicion1.text =
                     mDialogViewClasificacion.tv_posicion1.text.toString() + PlayerSettings.ultimaPuntuacion + "\n"
-                marcado=true
+                marcado = true
             } else {
-            if(marcado)
-                mDialogViewClasificacion.tv_posicion1.text =
-                    mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i-1].toString() + "\n"
+                if (marcado)
+                    mDialogViewClasificacion.tv_posicion1.text =
+                        mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i - 1].toString() + "\n"
                 else
-                mDialogViewClasificacion.tv_posicion1.text =
-                    mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i].toString() + "\n"
+                    mDialogViewClasificacion.tv_posicion1.text =
+                        mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i].toString() + "\n"
 
             }
 
         }
 
 
+    }
+
+    private fun crearDialogoMaterial() {
+        val titleText: TextView = TextView(this)
+        titleText.text = "¡Felicidades!"
+        titleText.gravity = Gravity.CENTER
+        titleText.setTextColor(getColor(R.color.lila))
+        titleText.setPadding(0, 30, 0, 0)
+        titleText.textSize = 25.0f
+        //Inflate the dialog with custom view
+        val mDialogViewClasificacion =
+            LayoutInflater.from(this).inflate(R.layout.alert_clasificacion, null)
+        //AlertDialogBuilder
+
+        var mBuilderRounded = MaterialAlertDialogBuilder(
+            ContextThemeWrapper(
+                this,
+                R.style.ThemeOverlay_App_MaterialAlertDialog
+            )
+        ).setView(mDialogViewClasificacion)
+            .setCustomTitle(titleText)
+            .show()
+//            .setTitle("¡No tienes usuario!")
+//                .setMessage(R.string.aviso_sin_nombre)
+        //show dialog
+        //val mAlertDialog = mBuilderClasificacion.show()
+        //login button click of custom layout
+
+        var marcado = false
+
+        for (i in 0..2) {
+            if (i == posicion - 1) {
+                mDialogViewClasificacion.tv_posicion1.text =
+                    mDialogViewClasificacion.tv_posicion1.text.toString() + PlayerSettings.ultimaPuntuacion + "\n"
+                marcado = true
+            } else {
+                if (marcado)
+                    mDialogViewClasificacion.tv_posicion1.text =
+                        mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i - 1].toString() + "\n"
+                else
+                    mDialogViewClasificacion.tv_posicion1.text =
+                        mDialogViewClasificacion.tv_posicion1.text.toString() + clasificaciones[i].toString() + "\n"
+
+            }
+
+        }
     }
 
 

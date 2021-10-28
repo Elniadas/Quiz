@@ -761,7 +761,7 @@ object Constants {
         // milliseconds to seconds
         val seconds: Long = tiempo / 1000 % 60
 
-        return "" + minutes + " : " + seconds
+        return "$minutes:$seconds"
 
     }
 

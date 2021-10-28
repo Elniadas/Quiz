@@ -22,9 +22,9 @@ data class Clasificacion(
         val minutes: Long = tiempo / 1000 / 60
 
         if (minutes < 10)
-            cadena += "0" + minutes + " :"
+            cadena += "0$minutes: "
         else
-            cadena += minutes.toString() + " :"
+            cadena += "$minutes: "
         // formula for conversion for
         // milliseconds to seconds
 
@@ -33,9 +33,9 @@ data class Clasificacion(
         val seconds: Long = tiempo / 1000 % 60
 
         if (seconds < 10)
-            cadena += " 0" + seconds
+            cadena += " 0$seconds"
         else
-            cadena += " " + seconds
+            cadena += " $seconds"
 
         return cadena
 
@@ -57,6 +57,7 @@ data class Clasificacion(
     }
 
     override fun toString(): String {
-        return "ID: " + id + " User: " + user + " Puntacion: " + puntuation + "Tiempo: " + parseIntoTime()
+//        return "ID: " + id + " User: " + user + " Puntacion: " + puntuation + "Tiempo: " + parseIntoTime()
+        return "Jugador: " + user + " Puntos: " + puntuation + " Tiempo: " + parseIntoTime()
     }
 }

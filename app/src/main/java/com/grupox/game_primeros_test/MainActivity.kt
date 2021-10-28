@@ -1,11 +1,18 @@
 package com.grupox.game_primeros_test
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.alert_layout.*
@@ -43,7 +50,7 @@ class MainActivity : Audio() {
 
             if (LoadData.prefs.name.isEmpty() || LoadData.prefs.name == "") {
 
-                crearDialogo()
+                crearDialogoRedondo()
 
 
 //                if (primera == true) {
@@ -84,31 +91,74 @@ class MainActivity : Audio() {
     }
 
 
-   private fun crearDialogo(){
+    private fun crearDialogo() {
         //Inflate the dialog with custom view
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_layout, null)
+        val titleText: TextView = TextView(this)
+        titleText.text = "¡No tienes usuario!"
+        titleText.setBackgroundColor(Color.BLACK)
+        titleText.setPadding(10, 10, 10, 10)
+        titleText.gravity = Gravity.CENTER
+        titleText.setTextColor(Color.WHITE)
+        titleText.textSize = 20.0f
         //AlertDialogBuilder
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
-            .setTitle("No tienes usuario")
+            .setCustomTitle(titleText)
         //show dialog
-        val  mAlertDialog = mBuilder.show()
+        val mAlertDialog = mBuilder.show()
         //login button click of custom layout
-        mDialogView.bt_continuar.setOnClickListener {
-            //dismiss dialog
-            mAlertDialog.dismiss()
-            val intent = Intent(this, QuizFragments::class.java)
-            startActivity(intent)
-
-        }
-        //cancel button click of custom layout
-        mDialogView.bt_cambiar.setOnClickListener {
-            //dismiss dialog
-            mAlertDialog.dismiss()
-            val intent = Intent(this, AudioScreen::class.java)
-            startActivity(intent)
-        }
+//        mDialogView.bt_continuar.setOnClickListener {
+//            //dismiss dialog
+//            mAlertDialog.dismiss()
+//            val intent = Intent(this, QuizFragments::class.java)
+//            startActivity(intent)
+//
+//        }
+//        //cancel button click of custom layout
+//        mDialogView.bt_cambiar.setOnClickListener {
+//            //dismiss dialog
+//            mAlertDialog.dismiss()
+//            val intent = Intent(this, AudioScreen::class.java)
+//            startActivity(intent)
+//        }
     }
+
+    private fun crearDialogoRedondo() {
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_layout, null)
+        val titleText: TextView = TextView(this)
+        titleText.text = "¡No tienes usuario!"
+        titleText.gravity = Gravity.CENTER
+        titleText.setTextColor(getColor(R.color.lila))
+        titleText.setPadding(0, 30, 0, 0)
+        titleText.textSize = 18.0f
+        var mBuilderRounded = MaterialAlertDialogBuilder(
+            ContextThemeWrapper(
+                this,
+                R.style.ThemeOverlay_App_MaterialAlertDialog
+            )
+        )
+            .setCustomTitle(titleText)
+//            .setTitle("¡No tienes usuario!")
+//            .setMessage(R.string.aviso_sin_nombre)
+            .setView(mDialogView)
+            .setNegativeButton(R.string.continuar_sin_nombre) { dialog, which ->
+                val intent = Intent(this, QuizFragments::class.java)
+                startActivity(intent)
+            }
+
+            .setNeutralButton(R.string.cambiar_nombre) { dialog, which ->
+                val intent = Intent(this, AudioScreen::class.java)
+                startActivity(intent)
+            }
+            .show()
+        mBuilderRounded.getButton(Dialog.BUTTON_NEUTRAL).textSize = 12f
+        mBuilderRounded.getButton(Dialog.BUTTON_NEGATIVE).textSize = 12f
+
+
+
+    }
+
 
     override fun onResume() {
         super.onResume()

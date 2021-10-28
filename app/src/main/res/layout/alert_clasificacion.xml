@@ -1,28 +1,27 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:padding="10dp">
+    android:paddingTop="10dp">
 
     <TextView
         android:id="@+id/mainInfoTv"
-        android:layout_width="wrap_content"
+        android:layout_width="269dp"
         android:layout_height="wrap_content"
-        android:text="Has quedado entre los 3 mejores!!"
-       android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:textSize="20sp"
-        ></TextView>
+        android:gravity="center"
+        android:text="¡Estas en el top 3!"
+        android:textColor="@color/lila"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_posicion1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
         android:gravity="center"
-        android:textSize="20sp"></TextView>
+        android:textColor="@color/azul_boton"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
