@@ -87,6 +87,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
             mediaController = MediaController(activity)
         //Anchor view no está funcionando como debería
         mediaController!!.setAnchorView(video_question)
+        PlayerSettings.volumenBajo()
 
     }
 
@@ -212,6 +213,7 @@ class QuizVideoType : QuizBaseTypeFragment(), View.OnClickListener {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(Runnable {
             // UI code goes here
+            PlayerSettings.volumenNormal()
             var a = activity as QuizFragments
             a.avanzar()
         },wait_time)

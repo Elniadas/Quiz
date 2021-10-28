@@ -69,5 +69,13 @@ object PlayerSettings {
 
     }
 
+    fun volumenNormal(){
+        player!!.setVolume(0.15f, 0.15f)
+    }
+
+    fun volumenBajo(){
+        player!!.setVolume(0.02f, 0.02f)
+    }
+
 
 }
