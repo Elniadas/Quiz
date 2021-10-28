@@ -66,7 +66,7 @@ class End_Activity : AppCompatActivity() {
 
 
 
-        if (CheckPolePosition()) {
+        if (CheckPolePosition() && nombre != "anonimo") {
             crearDialogoMaterial()
         }
 

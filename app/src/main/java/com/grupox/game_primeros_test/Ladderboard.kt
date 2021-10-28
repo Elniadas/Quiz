@@ -10,7 +10,7 @@ import com.grupox.game_primeros_test.bd.Clasificacion
 import com.grupox.game_primeros_test.bd.PreguntaViewModel
 import kotlinx.android.synthetic.main.activity_ladderboard.*
 
-class Ladderboard : AppCompatActivity() {
+class Ladderboard : Audio() {
 
     private lateinit var mClasificacionViewModel: PreguntaViewModel
 
