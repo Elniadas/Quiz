@@ -35,7 +35,7 @@ class End_Activity : AppCompatActivity() {
 
         var nombre = LoadData.prefs.name
         if (nombre == "")
-            nombre = "anonimo"
+            nombre = Constants.newBackGround.dropLast(4)
 
         tv_rightQuestions.text =
             "Preguntas acertadas de ${nombre} en total: ${PlayerSettings.rightQuestions}/" +
@@ -66,7 +66,7 @@ class End_Activity : AppCompatActivity() {
 
 
 
-        if (CheckPolePosition() && nombre != "anonimo") {
+        if ((nombre != "anonimo" && nombre != Constants.newBackGround.dropLast(4)) && CheckPolePosition()) {
             crearDialogoMaterial()
         }
 
