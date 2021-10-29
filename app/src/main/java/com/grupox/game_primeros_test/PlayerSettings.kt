@@ -18,8 +18,8 @@ object PlayerSettings {
     var wrongQuestions: Int = 0
     var questAnswered = false
     var buttonSoundPlayer: MediaPlayer? = null
-    lateinit var ultimaPuntuacion : Clasificacion
-    var tiempoPrueba :Long=0
+    lateinit var ultimaPuntuacion: Clasificacion
+    var tiempoPrueba: Long = 0
 
     fun startMusic(context: Context) {
         if (player == null) {
@@ -69,12 +69,14 @@ object PlayerSettings {
 
     }
 
-    fun volumenNormal(){
-        player!!.setVolume(0.15f, 0.15f)
+    fun volumenNormal() {
+        if (player != null)
+            player!!.setVolume(0.15f, 0.15f)
     }
 
-    fun volumenBajo(){
-        player!!.setVolume(0.02f, 0.02f)
+    fun volumenBajo() {
+        if (player != null)
+            player!!.setVolume(0.02f, 0.02f)
     }
 
 
