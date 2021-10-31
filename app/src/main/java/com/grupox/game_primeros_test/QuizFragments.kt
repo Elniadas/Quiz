@@ -128,11 +128,11 @@ class QuizFragments : Audio() {
                     "ch: ",
                     tiempo.toString()
                 )
+                var c =
+                    Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
+                PlayerSettings.ultimaPuntuacion = c
 
                 if (LoadData.prefs.name != "") {
-                    var c =
-                        Clasificacion(LoadData.prefs.name, PlayerSettings.rightQuestions, tiempo)
-                    PlayerSettings.ultimaPuntuacion = c
                     _PreguntaViewModer.addClasificacion(c)
                     PlayerSettings.tiempoPrueba = tiempo
                 } else {

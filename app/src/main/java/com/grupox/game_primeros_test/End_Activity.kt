@@ -40,7 +40,7 @@ class End_Activity : AppCompatActivity() {
         tv_rightQuestions.text =
             "Preguntas acertadas de ${nombre} en total: ${PlayerSettings.rightQuestions}/" +
                     "${LoadData.prefs.nPreguntas} con un tiempo de: " + Constants.parseIntoTime(
-                PlayerSettings.tiempoPrueba
+                PlayerSettings.ultimaPuntuacion.tiempo
             )
 
         bt_playAgain.setOnClickListener {
