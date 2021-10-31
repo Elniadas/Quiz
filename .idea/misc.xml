@@ -74,14 +74,15 @@
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_ladderboard.xml" value="0.2766415500538213" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions.xml" value="0.264" />
-        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.6" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_quiz_questions_old.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/activity_set_name.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/alert_clasificacion.xml" value="0.2" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/alert_layout.xml" value="0.264" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/custom_row.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_gif.xml" value="0.264" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_one_image.xml" value="0.259375" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_quiz_four_image_type.xml" value="0.264" />
-        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_quiz_video_type.xml" value="0.136" />
+        <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/fragment_quiz_video_type.xml" value="0.176" />
         <entry key="..\:/Users/bozis/Desktop/Quiz/app/src/main/res/layout/spinner_item.xml" value="0.259375" />
       </map>
     </option>
